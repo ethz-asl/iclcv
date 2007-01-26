@@ -200,7 +200,15 @@
 				>
 			</File>
 			<File
+				RelativePath="..\ICLUtils\src\SimpleMatrix.h"
+				>
+			</File>
+			<File
 				RelativePath="..\ICLUtils\src\SmartPtr.h"
+				>
+			</File>
+			<File
+				RelativePath="..\ICLUtils\src\StackTimer.h"
 				>
 			</File>
 			<File
