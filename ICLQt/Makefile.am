@@ -1,0 +1,1 @@
+link ../Makefile.doc.am
