@@ -1,28 +1,24 @@
 #*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
 #**                                                                 **
 #** File   : ICLGeom/CMakeLists.txt                                 **
 #** Module : ICLGeom                                                **
-#** Authors: Christian Groszewski                                   **
+#** Authors: Michael Goetting                                       **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,133 +27,133 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLGeom)
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
-add_libsource (${PROJECT_NAME} "src/Camera.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ConvexHullMonotoneChain.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PlaneEquation.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ViewRay.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PoseEstimator.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Posit.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SoftPosit.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CoplanarPointPoseEstimator.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ICP.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PointNormalEstimation.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GeomDefs.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(SOURCES src/ICLGeom/Camera.cpp
+	    src/ICLGeom/CoplanarPointPoseEstimator.cpp
+	    src/ICLGeom/GeomDefs.cpp
+	    src/ICLGeom/ICP.cpp
+	    src/ICLGeom/PlaneEquation.cpp
+	    src/ICLGeom/PointCloudNormalEstimator.cpp
+	    src/ICLGeom/PoseEstimator.cpp
+	    src/ICLGeom/Posit.cpp
+	    src/ICLGeom/SoftPosit.cpp
+	    src/ICLGeom/ViewRay.cpp)
 
-set(CONDITIONLIST HAVE_OPENGL_COND)
-add_libsource (${PROJECT_NAME} "src/SceneObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Scene.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SceneMouseHandler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SceneLight.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Primitive.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GridSceneObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ComplexCoordinateFrameSceneObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PointcloudSceneObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/RGBDImageSceneObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/RGBDMapping.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SceneLightObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Segmentation3D.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DepthCameraPointCloudGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PointCloudCreator.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(HEADERS src/ICLGeom/Camera.h
+	    src/ICLGeom/PointCloudNormalEstimator.h
+            src/ICLGeom/SoftPosit.h
+	    src/ICLGeom/GeomDefs.h
+	    src/ICLGeom/PoseEstimator.h
+            src/ICLGeom/ViewRay.h	   
+            src/ICLGeom/Geom.h
+            src/ICLGeom/PCLIncludes.h
+	    src/ICLGeom/Posit.h
+	    src/ICLGeom/CoordinateFrameSceneObject.h  
+	    src/ICLGeom/PointCloudGrabber.h 
+	    src/ICLGeom/CoplanarPointPoseEstimator.h
+	    src/ICLGeom/Hit.h
+            src/ICLGeom/PlaneEquation.h
+	    src/ICLGeom/PrimitiveType.h
+            src/ICLGeom/SceneObjectBase.h
+	    src/ICLGeom/DataSegmentBase.h  
+            src/ICLGeom/ICP.h
+            src/ICLGeom/RGBDMapping.h
+            src/ICLGeom/Plot3D.h 
+	    src/ICLGeom/DataSegment.h            
+            src/ICLGeom/PlotHandle3D.h)
 
-add_libsource (${PROJECT_NAME} "src/PointCloudObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PointCloudObjectBase.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/OctreeObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PlotWidget3D.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+IF(QT_FOUND)
+  LIST (APPEND SOURCES src/ICLGeom/Scene.cpp
+	               src/ICLGeom/SceneLight.cpp
+		       src/ICLGeom/SceneLightObject.cpp
+		       src/ICLGeom/SceneMouseHandler.cpp
+		       src/ICLGeom/SceneObject.cpp
+		       src/ICLGeom/Primitive.cpp
+		       src/ICLGeom/GridSceneObject.cpp
+		       src/ICLGeom/ComplexCoordinateFrameSceneObject.cpp
+		       src/ICLGeom/Segmentation3D.cpp
+		       src/ICLGeom/DepthCameraPointCloudGrabber.cpp
+		       src/ICLGeom/PointCloudCreator.cpp
+		       src/ICLGeom/PointCloudObjectBase.cpp
+		       src/ICLGeom/PointCloudObject.cpp
+		       src/ICLGeom/OctreeObject.cpp
+		       src/ICLGeom/RayCastOctreeObject.cpp
+		       src/ICLGeom/PlotWidget3D.cpp)
 
-set(CONDITIONLIST HAVE_OPENCL_COND)
-add_libsource (${PROJECT_NAME} "src/PointCloudCreatorCL.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+  LIST (APPEND HEADERS src/ICLGeom/Scene.h
+                       src/ICLGeom/SceneLight.h
+		       src/ICLGeom/SceneLightObject.h
+		       src/ICLGeom/SceneMouseHandler.h
+		       src/ICLGeom/SceneObject.h	    
+		       src/ICLGeom/Primitive.h
+		       src/ICLGeom/GridSceneObject.h
+		       src/ICLGeom/ComplexCoordinateFrameSceneObject.h
+		       src/ICLGeom/Segmentation3D.h
+		       src/ICLGeom/DepthCameraPointCloudGrabber.h
+		       src/ICLGeom/PointCloudCreator.h
+		       src/ICLGeom/PointCloudObject.h
+		       src/ICLGeom/PointCloudObjectBase.h
+		       src/ICLGeom/OctreeObject.h 
+		       src/ICLGeom/RayCastOctreeObject.h 
+		       src/ICLGeom/PlotWidget3D.h)
+ENDIF()
 
-set(CONDITIONLIST HAVE_PCL_COND)
-add_libsource (${PROJECT_NAME} "src/PCLPointCloudObject.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PCDFileGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+IF(OpenCV_FOUND AND PCL_FOUND)
+  LIST (APPEND SOURCES src/ICLGeom/PCDFileGrabber.cpp
+                       src/ICLGeom/PCLPointCloudObject.cpp)
+		           
+  LIST (APPEND HEADERS src/ICLGeom/PCDFileGrabber.h
+                       src/ICLGeom/PCLPointCloudObject.h)
+ENDIF()
 
-set(CONDITIONLIST HAVE_OPENCV_COND)
-add_libsource (${PROJECT_NAME} "src/OpenCVCamCalib.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "show-extrinsic-calibration-grid" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(OpenCV_FOUND)
+  LIST (APPEND SOURCES src/ICLGeom/OpenCVCamCalib.cpp)
+  LIST (APPEND HEADRES src/ICLGeom/OpenCVCamCalib.h)
+ENDIF()
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_OPENGL_COND)
-add_example (${PROJECT_NAME} "camera-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "scene-object-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "superquadric-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "show-scene" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "kinect-normals-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "generic-texture-coords-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "plot-widget-3D-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(OPENCL_FOUND)
+    LIST (APPEND SOURCES src/ICLGeom/PointCloudCreatorCL.cpp)
+    LIST (APPEND HEADERS src/ICLGeom/PointCloudCreatorCL.h)
+ENDIF()
 
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLCV)
-add_example (${PROJECT_NAME} "simplex-2D-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "simplex-3D-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "swiss-ranger-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "texture-cube-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_OPENGL_COND HAVE_GLX_COND)
-add_example (${PROJECT_NAME} "offscreen-rendering-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "rotate-image-3D" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "animated-grid-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "kinect-pointcloud-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "kinect-pointcloud-demo-2" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "kinect-segmentation-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "depth-camera-simulator" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-if(NOT APPLE)
-add_example (${PROJECT_NAME} "scene-graph-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-endif()
+# ---- Library build instructions ----
+INCLUDE_DIRECTORIES(BEFORE src
+                           ${ICL_SOURCE_DIR}/ICLUtils/src
+                           ${ICL_SOURCE_DIR}/ICLMath/src
+                           ${ICL_SOURCE_DIR}/ICLCore/src
+                           ${ICL_SOURCE_DIR}/ICLFilter/src
+                           ${ICL_SOURCE_DIR}/ICLIO/src
+                           ${ICL_SOURCE_DIR}/ICLQt/src
+                           ${ICL_SOURCE_DIR}/ICLCV/src)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_OPENGL_COND HAVE_GLX_COND HAVE_LIBFREENECT_COND)
-add_example (${PROJECT_NAME} "kinect-recorder" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+ADD_LIBRARY(ICLGeom SHARED ${SOURCES} ${HEADERS})
 
-set(CONDITIONLIST HAVE_OPENCV_COND HAVE_PCL_COND)
-add_example (${PROJECT_NAME} "point-cloud-tests" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- 3rd party library handling ----
+TARGET_LINK_LIBRARIES(ICLGeom ICLCV
+                              ${PCL_LIBRARIES})
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_OPENGL_COND HAVE_GLX_COND HAVE_PCL_COND)
-add_example (${PROJECT_NAME} "rgbd-mapping-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET_TARGET_PROPERTIES(ICLGeom
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_OPENCV_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLCV)
-add_example (${PROJECT_NAME} "opencv-calib" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Build examples/ demos/ apps ----
+IF(BUILD_DEMOS)
+  ADD_SUBDIRECTORY(demos)
+ENDIF()
 
-set(CONDITIONLIST "HAVE_GTEST_COND")
-set(ICLLibsToLinkAgainst ICLGeom)
-add_gtest (${PROJECT_NAME} "test-camera" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(BUILD_APPS)
+  ADD_SUBDIRECTORY(apps)
+ENDIF()
 
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${LIB_SOURCES})
-else()
-add_library(${PROJECT_NAME} SHARED ${LIB_SOURCES})
-endif()
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLGeom_dependencies})
+# ---- Install specifications ----
+INSTALL(TARGETS ICLGeom
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS)
 
-link_directories("${LIBRARY_OUTPUT_PATH}")
-if(WIN32)
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 #MINGW COMPATIBILITY 
-	ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ 
-	 WORLD_READ
-)
-endif()
-
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ 
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
+# ---- PKG-config ----
+CREATE_PKGCONFIG(NAME ICLGeom
+                 LIBRARY_DEPS ${PCL_LIBRARIES}
+                 PKGCONFIG_DEPS ICLCV-${SO_VERSION})

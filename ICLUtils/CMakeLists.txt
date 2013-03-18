@@ -1,28 +1,24 @@
 #*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
 #**                                                                 **
 #** File   : ICLUtils/CMakeLists.txt                                **
 #** Module : ICLUtils                                               **
-#** Authors: Christian Groszewski                                   **
+#** Authors: Michael Goetting                                       **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,117 +27,130 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLUtils)
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
-add_libsource (${PROJECT_NAME} "src/Point32f.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Point.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Range.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SteppingRange.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Rect32f.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Rect.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Size32f.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Size.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Exception.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MultiThreader.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ProgArg.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Semaphore.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SignalHandler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SmartPtr.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StrTok.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Thread.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Time.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Timer.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ConsoleProgress.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FPSEstimator.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FPSLimiter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Mutex.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StringUtils.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MultiTypeMap.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ConfigFile.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PugiXML.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(SOURCES src/ICLUtils/ConfigFile.cpp
+            src/ICLUtils/Configurable.cpp
+	    src/ICLUtils/ConsoleProgress.cpp
+	    src/ICLUtils/Exception.cpp
+	    src/ICLUtils/File.cpp
+	    src/ICLUtils/FPSEstimator.cpp
+	    src/ICLUtils/FPSLimiter.cpp
+	    src/ICLUtils/MultiThreader.cpp
+	    src/ICLUtils/MultiTypeMap.cpp
+	    src/ICLUtils/Mutex.cpp
+	    src/ICLUtils/Point32f.cpp
+	    src/ICLUtils/Point.cpp
+	    src/ICLUtils/ProcessMonitor.cpp
+	    src/ICLUtils/ProgArg.cpp
+	    src/ICLUtils/PugiXML.cpp
+	    src/ICLUtils/Random.cpp
+	    src/ICLUtils/Range.cpp
+	    src/ICLUtils/Rect32f.cpp
+	    src/ICLUtils/Rect.cpp
+	    src/ICLUtils/Semaphore.cpp
+	    src/ICLUtils/SignalHandler.cpp
+	    src/ICLUtils/Size32f.cpp
+	    src/ICLUtils/Size.cpp
+	    src/ICLUtils/SmartPtr.cpp
+	    src/ICLUtils/SteppingRange.cpp
+	    src/ICLUtils/StringUtils.cpp
+	    src/ICLUtils/StrTok.cpp
+	    src/ICLUtils/TextTable.cpp
+	    src/ICLUtils/Thread.cpp
+	    src/ICLUtils/Time.cpp
+	    src/ICLUtils/Timer.cpp)
 
-add_libsource (${PROJECT_NAME} "src/Configurable.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ProcessMonitor.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/TextTable.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(HEADERS src/ICLUtils/Any.h
+            src/ICLUtils/Array2D.h
+	    src/ICLUtils/BasicTypes.h
+	    src/ICLUtils/ClippedCast.h
+	    src/ICLUtils/CompatMacros.h
+            src/ICLUtils/ConfigFile.h
+            src/ICLUtils/Configurable.h
+            src/ICLUtils/ConfigurableProxy.h
+	    src/ICLUtils/ConsoleProgress.h
+	    src/ICLUtils/Exception.h
+	    src/ICLUtils/FastMedianList.h
+	    src/ICLUtils/File.h
+	    src/ICLUtils/FPSEstimator.h
+	    src/ICLUtils/FPSLimiter.h
+	    src/ICLUtils/Function.h
+	    src/ICLUtils/Lockable.h
+	    src/ICLUtils/Macros.h
+	    src/ICLUtils/MultiThreader.h
+	    src/ICLUtils/MultiTypeMap.h
+	    src/ICLUtils/Mutex.h
+	    src/ICLUtils/ParamList.h
+	    src/ICLUtils/Point32f.h
+	    src/ICLUtils/Point.h
+	    src/ICLUtils/ProcessMonitor.h
+	    src/ICLUtils/ProgArg.h
+	    src/ICLUtils/PThreadFix.h
+	    src/ICLUtils/PugiXML.h
+	    src/ICLUtils/Random.h
+	    src/ICLUtils/Range.h
+	    src/ICLUtils/Rect32f.h
+	    src/ICLUtils/Rect.h
+	    src/ICLUtils/Semaphore.h
+	    src/ICLUtils/ShallowCopyable.h
+	    src/ICLUtils/SignalHandler.h
+	    src/ICLUtils/Size32f.h
+	    src/ICLUtils/Size.h
+	    src/ICLUtils/SmartPtrBase.h
+	    src/ICLUtils/SmartPtr.h
+	    src/ICLUtils/SmartArray.h
+	    src/ICLUtils/StackTimer.h
+	    src/ICLUtils/SteppingRange.h
+	    src/ICLUtils/StringUtils.h
+	    src/ICLUtils/StrTok.h
+	    src/ICLUtils/TestAssertions.h
+	    src/ICLUtils/TextTable.h
+	    src/ICLUtils/Thread.h
+	    src/ICLUtils/Time.h
+	    src/ICLUtils/Timer.h
+	    src/ICLUtils/UncopiedInstance.h
+	    src/ICLUtils/Uncopyable.h
+	    src/ICLUtils/Utils.h
+	    src/ICLUtils/VisualizationDescription.h
+	    src/ICLUtils/XML.h)
 
-add_libsource (${PROJECT_NAME} "src/Random.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/File.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+INCLUDE_DIRECTORIES(BEFORE src 
+                           "${CMAKE_BINARY_DIR}/src")
 
-# this issue was solved by replacing libiomp5 from IPP 6.1 by the libiomp5
-# version, that is shipped with IPP 7.0 (update 6)
-#add_libsource (${PROJECT_NAME} "src/PThreadFix.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+ADD_LIBRARY(ICLUtils SHARED ${SOURCES} ${HEADERS})
 
+# ---- 3rd party library handling ----
+LIST(REMOVE_DUPLICATES REQUIRED_LIBRARIES_LIST)
+TARGET_LINK_LIBRARIES(ICLUtils ${REQUIRED_LIBRARIES_LIST}
+                               ${IPP_LIBRARIES}
+			       ${MKL_LIBRARIES}
+			       ${OPENCL_LIBRARIES})
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME})
-add_example (${PROJECT_NAME} "regex-find" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "progarg-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "function-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "any-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET_TARGET_PROPERTIES(ICLUtils
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
 
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLMarkers)
-add_example (${PROJECT_NAME} "configurable-info" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Build examples ----
+IF(BUILD_EXAMPLES)
+  ADD_SUBDIRECTORY(examples)
+ENDIF()
 
+IF(BUILD_APPS)
+  ADD_SUBDIRECTORY(apps)
+ENDIF()
 
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLGeom)
-add_example (${PROJECT_NAME} "config-file-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Install specifications ----
+INSTALL(TARGETS ICLUtils
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS)
 
-set(CONDITIONLIST HAVE_GTEST_COND)
-set(ICLLibsToLinkAgainst ICLUtils)
-#add_gtest (${PROJECT_NAME} "matrix-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-# must be moved to math
-
-# todo rewrite these apps as gtests
-#add_gtest (${PROJECT_NAME} "config-file-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "dyn-matrix-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "dyn-matrix-utils-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "dyn-vector-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "fixed-matrix-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "ransac-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "string-tokenizer-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "xml-parser-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${LIB_SOURCES})
-else()
-add_library(${PROJECT_NAME} SHARED ${LIB_SOURCES})
-endif()
-
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLUtils_dependencies})
-if(WIN32)
-target_link_libraries(${PROJECT_NAME} ${ICLUtils_dependencies} pthread)
-else()
-target_link_libraries(${PROJECT_NAME} ${ICLUtils_dependencies})
-endif()
-link_directories("${LIBRARY_OUTPUT_PATH}")
-if(WIN32)
-install (TARGETS ${PROJECT_NAME}
-			LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-			#MINGW COMPATIBILITY
-			ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-			RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ
-	 WORLD_READ
-)
-endif()
-
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
-
+# ---- PKG-config ----
+IF(IPP_FOUND)
+  CREATE_PKGCONFIG(NAME ICLUtils
+                   LIBRARY_DEPS ${REQUIRED_LIBRARIES_LIST} ${IPP_LIBRARIES} ${MKL_LIBRARIES} ${OPENCL_LIBRARIES})
+ELSE()
+  CREATE_PKGCONFIG(NAME ICLUtils
+                   LIBRARY_DEPS ${REQUIRED_LIBRARIES_LIST} ${IPP_LIBRARIES} ${MKL_LIBRARIES} ${OPENCL_LIBRARIES})
+ENDIF()

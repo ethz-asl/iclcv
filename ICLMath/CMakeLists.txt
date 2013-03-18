@@ -1,28 +1,24 @@
 #*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
 #**                                                                 **
 #** File   : ICLMath/CMakeLists.txt                                 **
 #** Module : ICLMath                                                **
-#** Authors: Christian Groszewski                                   **
+#** Authors: Michael Goetting                                       **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,79 +27,82 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLMath)
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
-add_libsource (${PROJECT_NAME} "src/SOM.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LLM.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DynMatrix.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FFTUtils.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FixedMatrix.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DynMatrixUtils.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StochasticOptimizer.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LevenbergMarquardtFitter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SimplexOptimizer.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Homography2D.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StraightLine2D.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/KDTree.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PolynomialRegression.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(SOURCES src/ICLMath/DynMatrix.cpp
+            src/ICLMath/DynMatrixUtils.cpp
+	    src/ICLMath/FFTUtils.cpp
+	    src/ICLMath/FixedMatrix.cpp
+	    src/ICLMath/Homography2D.cpp
+	    src/ICLMath/KDTree.cpp
+	    src/ICLMath/LevenbergMarquardtFitter.cpp
+	    src/ICLMath/LLM.cpp
+	    src/ICLMath/PolynomialRegression.cpp
+	    src/ICLMath/SimplexOptimizer.cpp
+	    src/ICLMath/SOM.cpp
+	    src/ICLMath/StochasticOptimizer.cpp
+	    src/ICLMath/StraightLine2D.cpp)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME})
-add_example (${PROJECT_NAME} "levenberg-marquardt-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET(HEADERS src/ICLMath/DynMatrix.h
+            src/ICLMath/DynMatrixUtils.h
+	    src/ICLMath/DynVector.h
+	    src/ICLMath/FFTException.h
+	    src/ICLMath/FFTUtils.h
+	    src/ICLMath/FixedMatrix.h
+	    src/ICLMath/FixedVector.h
+	    src/ICLMath/Homography2D.h
+	    src/ICLMath/KDTree.h
+	    src/ICLMath/KMeans.h
+	    src/ICLMath/LeastSquareModelFitting2D.h
+	    src/ICLMath/LeastSquareModelFitting.h
+	    src/ICLMath/LevenbergMarquardtFitter.h
+	    src/ICLMath/LinearTransform1D.h
+	    src/ICLMath/LLM.h
+	    src/ICLMath/MathFunctions.h
+	    src/ICLMath/Math.h
+	    src/ICLMath/MatrixSubRectIterator.h
+	    src/ICLMath/Octree.h
+	    src/ICLMath/PCLKdtree.h
+	    src/ICLMath/PCLOctree.h
+	    src/ICLMath/PolynomialRegression.h
+	    src/ICLMath/QuadTree.h
+	    src/ICLMath/RansacFitter.h
+	    src/ICLMath/SimplexOptimizer.h
+	    src/ICLMath/SOM2D.h
+	    src/ICLMath/SOM.h
+	    src/ICLMath/StochasticOptimizer.h
+	    src/ICLMath/StraightLine2D.h)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "llm-1D-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "llm-1D-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "k-means-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "quad-tree-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_example (${PROJECT_NAME} "kd-tree-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+INCLUDE_DIRECTORIES(BEFORE src
+                           ${ICL_SOURCE_DIR}/ICLUtils/src)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_PCL_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLGeom)
-add_example (${PROJECT_NAME} "octree-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "polynomial-regression-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+ADD_LIBRARY(ICLMath SHARED ${SOURCES} ${HEADERS})
 
+# ---- Linker commands ----
+TARGET_LINK_LIBRARIES(ICLMath ICLUtils)
 
-set(CONDITIONLIST HAVE_GTEST_COND)
-set(ICLLibsToLinkAgainst "${GTEST_LIBS_l}")
-#add_gtest (${PROJECT_NAME} "test-image" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET_TARGET_PROPERTIES(ICLMath
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
 
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${LIB_SOURCES})
-else()
-add_library(${PROJECT_NAME} SHARED ${LIB_SOURCES})
-endif()
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLMath_dependencies})
+# ---- Build examples ----
+IF(BUILD_EXAMPLES)
+  ADD_SUBDIRECTORY(examples)
+ENDIF()
 
-link_directories("${LIBRARY_OUTPUT_PATH}")
-if(WIN32)
-install (TARGETS ${PROJECT_NAME}  
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 #MINGW COMPATIBILITY 
-     ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ 
-	 WORLD_READ
-)
-endif()
+IF(BUILD_DEMOS)
+  ADD_SUBDIRECTORY(demos)
+ENDIF()
 
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ 
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
+# ---- Install specifications ----
+INSTALL(TARGETS ICLMath
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS)
+
+# --- pkgconfig file ---
+LIST(APPEND PROCESSED_ICL_LIBS "ICLMath")
+
+# ---- PKG-config ----
+CREATE_PKGCONFIG(NAME ICLMath
+                 PKGCONFIG_DEPS ICLUtils-${SO_VERSION})

@@ -1,7 +1,7 @@
 #*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
@@ -11,18 +11,14 @@
 #** Authors: Christian Groszewski                                   **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,184 +27,238 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLIO)
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
-add_libsource (${PROJECT_NAME} "src/DemoImageFlowers.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DemoImageMacaw.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DemoImageWindows.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DemoImageLena.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DemoImageCameraMan.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DemoImageMandril.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CreateGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileGrabberPluginCSV.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileGrabberPluginBICL.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileGrabberPluginPNM.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileList.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FilenameGenerator.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileWriter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileWriterPluginCSV.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileWriterPluginPNM.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileWriterPluginBICL.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GenericGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Grabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImageUndistortion.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/IOFunctions.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/TestImages.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DemoGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GenericImageOutput.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/IntrinsicCalibrator.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ColorFormatDecoder.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImageCompressor.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MyrmexDecoder.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_LIBMESASR_COND)
-add_libsource (${PROJECT_NAME} "src/SwissRangerGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_LIBJPEG_COND)
-add_libsource (${PROJECT_NAME} "src/JPEGHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileGrabberPluginJPEG.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileWriterPluginJPEG.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/JPEGDecoder.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/JPEGEncoder.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_LIBPNG_COND)
-add_libsource (${PROJECT_NAME} "src/FileGrabberPluginPNG.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileWriterPluginPNG.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_IMAGEMAGICK_COND)
-add_libsource (${PROJECT_NAME} "src/FileWriterPluginImageMagick.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FileGrabberPluginImageMagick.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST SYSTEM_LINUX_COND HAVE_VIDEODEV_COND)
-add_libsource (${PROJECT_NAME} "src/V4L2Grabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_LIBDC_COND)
-add_libsource (${PROJECT_NAME} "src/DC.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DCDevice.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DCDeviceFeatures.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DCFrameQueue.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DCGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DCGrabberThread.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(SOURCES src/ICLIO/DemoImageFlowers.cpp
+            src/ICLIO/DemoImageMacaw.cpp
+	    src/ICLIO/DemoImageWindows.cpp
+	    src/ICLIO/DemoImageLena.cpp
+	    src/ICLIO/DemoImageCameraMan.cpp
+	    src/ICLIO/DemoImageMandril.cpp
+	    src/ICLIO/FileGrabber.cpp
+	    src/ICLIO/CreateGrabber.cpp
+	    src/ICLIO/FileGrabberPluginCSV.cpp
+	    src/ICLIO/FileGrabberPluginBICL.cpp
+	    src/ICLIO/FileGrabberPluginPNM.cpp
+	    src/ICLIO/FileList.cpp
+	    src/ICLIO/FilenameGenerator.cpp
+	    src/ICLIO/FileWriter.cpp
+	    src/ICLIO/FileWriterPluginCSV.cpp
+	    src/ICLIO/FileWriterPluginPNM.cpp
+	    src/ICLIO/FileWriterPluginBICL.cpp
+	    src/ICLIO/GenericGrabber.cpp
+	    src/ICLIO/Grabber.cpp
+	    src/ICLIO/ImageUndistortion.cpp
+	    src/ICLIO/IOFunctions.cpp
+	    src/ICLIO/TestImages.cpp
+	    src/ICLIO/DemoGrabber.cpp
+	    src/ICLIO/GenericImageOutput.cpp
+	    src/ICLIO/IntrinsicCalibrator.cpp
+	    src/ICLIO/ColorFormatDecoder.cpp
+	    src/ICLIO/ImageCompressor.cpp
+	    src/ICLIO/MyrmexDecoder.cpp
+	    src/ICLIO/JPEGHandle.cpp
+	    src/ICLIO/FileGrabberPluginJPEG.cpp
+	    src/ICLIO/FileWriterPluginJPEG.cpp
+	    src/ICLIO/JPEGDecoder.cpp
+	    src/ICLIO/JPEGEncoder.cpp
+	    src/ICLIO/FileGrabberPluginPNG.cpp
+	    src/ICLIO/FileWriterPluginPNG.cpp)
 
-set(CONDITIONLIST HAVE_XINE_COND)
-add_libsource (${PROJECT_NAME} "src/VideoGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_OPENCV_COND)
-add_libsource (${PROJECT_NAME} "src/OpenCVCamGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/OpenCVVideoWriter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_OPENCV_COND)
-add_libsource (${PROJECT_NAME} "src/OpenCVVideoGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_QT_COND)
-add_libsource (${PROJECT_NAME} "src/SharedMemoryGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SharedMemoryPublisher.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_LIBFREENECT_COND)
-add_libsource (${PROJECT_NAME} "src/KinectGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_PYLON_COND)
+SET(HEADERS src/ICLIO/FileGrabber.h
+	    src/ICLIO/CreateGrabber.h
+	    src/ICLIO/FileGrabberPlugin.h
+	    src/ICLIO/FileGrabberPluginCSV.h
+	    src/ICLIO/FileGrabberPluginBICL.h
+	    src/ICLIO/FileGrabberPluginPNM.h
+	    src/ICLIO/FileList.h
+	    src/ICLIO/FilenameGenerator.h
+	    src/ICLIO/FileWriter.h
+	    src/ICLIO/FileWriterPlugin.h
+	    src/ICLIO/FileWriterPluginCSV.h
+	    src/ICLIO/FileWriterPluginPNM.h
+	    src/ICLIO/FileWriterPluginBICL.h
+	    src/ICLIO/GenericGrabber.h
+	    src/ICLIO/Grabber.h
+	    src/ICLIO/GrabberDeviceDescription.h
+	    src/ICLIO/ImageOutput.h
+	    src/ICLIO/ImageUndistortion.h
+	    src/ICLIO/IO.h
+	    src/ICLIO/IOFunctions.h
+	    src/ICLIO/TestImages.h
+	    src/ICLIO/DemoGrabber.h
+	    src/ICLIO/GenericImageOutput.h
+	    src/ICLIO/IntrinsicCalibrator.h
+	    src/ICLIO/ColorFormatDecoder.h
+	    src/ICLIO/ImageCompressor.h
+	    src/ICLIO/MyrmexDecoder.h
+	    src/ICLIO/JPEGHandle.h
+	    src/ICLIO/FileGrabberPluginJPEG.h
+	    src/ICLIO/FileWriterPluginJPEG.h
+	    src/ICLIO/JPEGDecoder.h
+	    src/ICLIO/JPEGEncoder.h
+	    src/ICLIO/FourCC.h
+	    src/ICLIO/FileGrabberPluginPNG.h
+	    src/ICLIO/FileWriterPluginPNG.h)
 
-add_libsource (${PROJECT_NAME} "src/PylonGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PylonGrabberThread.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PylonCameraOptions.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PylonColorConverter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PylonUtils.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_OPENNI_COND)
-add_libsource (${PROJECT_NAME} "src/OpenNIGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/OpenNIUtils.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_RSB_COND HAVE_PROTOBUF_COND)
-#add_libsource (${PROJECT_NAME} "src/RSBImage.pb.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/RSBImageOutput.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/RSBGrabber.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+IF(MESASR_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/SwissRangerGrabber.cpp)
+  LIST(APPEND HEADERS src/ICLIO/SwissRangerGrabber.h)
+ENDIF()
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME})
-add_example (${PROJECT_NAME} "jpg2cpp" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "convert" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(ImageMagick_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/FileWriterPluginImageMagick.cpp
+    src/ICLIO/FileGrabberPluginImageMagick.cpp)
+  LIST(APPEND HEADERS src/ICLIO/FileWriterPluginImageMagick.h
+    src/ICLIO/FileGrabberPluginImageMagick.h)
+ENDIF()
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "create" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-set(CONDITIONLIST HAVE_RSB_COND HAVE_PROTOBUF_COND)
-add_example (${PROJECT_NAME} "rsb-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(LIBDC_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/DC.cpp
+    src/ICLIO/DCDevice.cpp
+    src/ICLIO/DCDeviceFeatures.cpp
+    src/ICLIO/DCFrameQueue.cpp
+    src/ICLIO/DCGrabber.cpp
+    src/ICLIO/DCGrabberThread.cpp)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_LIBDC_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME})
-add_example (${PROJECT_NAME} "dcclearisochannels" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "dcdeviceinfo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "camera-param-io" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "reset-dc-bus" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+  LIST(APPEND HEADERS src/ICLIO/DC.h
+    src/ICLIO/DCDevice.h
+    src/ICLIO/DCDeviceFeatures.h
+    src/ICLIO/DCDeviceOptions.h
+    src/ICLIO/DCFrameQueue.h
+    src/ICLIO/DCGrabber.h
+    src/ICLIO/DCGrabberThread.h)
+ENDIF()
+
+IF(V4L_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/V4L2Grabber.cpp)
+  LIST(APPEND HEADERS src/ICLIO/V4L2Grabber.h)
+ENDIF()
+
+IF(OpenCV_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/OpenCVCamGrabber.cpp
+                      src/ICLIO/OpenCVVideoWriter.cpp
+		      src/ICLIO/OpenCVVideoGrabber.cpp)
+  LIST(APPEND HEADERS src/ICLIO/OpenCVCamGrabber.h
+                      src/ICLIO/OpenCVVideoWriter.h
+		      src/ICLIO/OpenCVVideoGrabber.h)
+ENDIF()
+ 
+IF(QT4_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/SharedMemoryGrabber.cpp
+                      src/ICLIO/SharedMemoryPublisher.cpp)
+  LIST(APPEND HEADERS src/ICLIO/SharedMemoryGrabber.h
+                      src/ICLIO/SharedMemoryPublisher.h)
+ENDIF()
+
+IF(XINE_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/VideoGrabber.cpp)
+  LIST(APPEND HEADERS src/ICLIO/VideoGrabber.h)
+ENDIF()
+
+IF(LIBFREENECT_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/KinectGrabber.cpp)
+  LIST(APPEND HEADERS src/ICLIO/KinectGrabber.h)
+ENDIF()
+
+IF(PYLON_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/PylonGrabber.cpp
+                      src/ICLIO/PylonGrabberThread.cpp
+		      src/ICLIO/PylonCameraOptions.cpp
+		      src/ICLIO/PylonColorConverter.cpp
+		      src/ICLIO/PylonUtils.cpp)
+
+  LIST(APPEND HEADERS src/ICLIO/PylonGrabber.h
+                      src/ICLIO/PylonGrabberThread.h
+		      src/ICLIO/PylonCameraOptions.h
+		      src/ICLIO/PylonColorConverter.h
+		      src/ICLIO/PylonUtils.h
+		      src/ICLIO/PylonIncludes.h)
+ENDIF()
+
+IF(OPENNI_FOUND)
+  LIST(APPEND SOURCES src/ICLIO/OpenNIGrabber.cpp
+                      src/ICLIO/OpenNIUtils.cpp)
+		      
+  LIST(APPEND HEADERS src/ICLIO/OpenNIGrabber.h
+                      src/ICLIO/OpenNIIncludes.h
+		      src/ICLIO/OpenNIUtils.h)
+
+ENDIF()
+
+IF(RSB_FOUND)
+  INCLUDE_DIRECTORIES(${CMAKE_CURRENT_BINARY_DIR})
+  PROTOBUF_GENERATE_CPP(PROTO_SRCS PROTO_HDRS src/ICLIO/proto/RSBImage.proto)
+
+  LIST(APPEND SOURCES src/ICLIO/RSBGrabber.cpp
+                      src/ICLIO/RSBImageOutput.cpp
+		      ${PROTO_SRCS})
+
+  LIST(APPEND HEADERS src/ICLIO/RSBGrabber.h
+                      src/ICLIO/RSBImageOutput.h
+		      ${PROTO_HDRS})
+
+ENDIF()
+
+# ---- Library build instructions ----
+INCLUDE_DIRECTORIES(BEFORE src
+                           ${ICL_SOURCE_DIR}/ICLUtils/src
+                           ${ICL_SOURCE_DIR}/ICLMath/src
+                           ${ICL_SOURCE_DIR}/ICLCore/src
+                           ${ICL_SOURCE_DIR}/ICLFilter/src)
+
+ADD_LIBRARY(ICLIO SHARED ${SOURCES} ${HEADERS})
+
+# ---- 3rd party library handling ----
+TARGET_LINK_LIBRARIES(ICLIO ICLFilter
+                            ${MESASR_LIBRARIES}
+			    ${ImageMagick_LIBRARIES}
+			    ${LIBDC_LIBRARIES}
+			    ${V4L_LIBRARIES}
+			    ${XINE_LIBRARIES}
+			    ${OPENGL_LIBRARIES}
+			    ${LIBFREENECT_LIBRARIES}
+			    ${PYLON_LIBRARIES}
+			    ${OPENNI_LIBRARIES}
+			    ${QT_LIBRARIES}
+			    ${RSB_LIBRARIES}
+			    ${PROTOBUF_LIBRARIES}
+			    ${OpenCV_LIBS})
+
+# Wo sind die hier :-? (UNICAP XCF QT GENICAM OPENNI RSB PROTOBUF)
 
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_LIBDC_COND HAVE_QT_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "multi-cam-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET_TARGET_PROPERTIES(ICLIO
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
 
-#set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND) should be possible even without GUI
-# Christian: How to make icl-pipe not be built but not link against Qt if this is not available
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-if(HAVE_QT_COND)
-  set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-else()
-  set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLCV)
-endif()
-add_example (${PROJECT_NAME} "pipe" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Build examples/ demos/ apps ----
+IF(BUILD_DEMOS)
+  ADD_SUBDIRECTORY(demos)
+ENDIF()
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "reset-sm-bus" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "undistortion-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(BUILD_APPS)
+  ADD_SUBDIRECTORY(apps)
+ENDIF()
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_XINE_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "video-player" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Install specifications ----
+INSTALL(TARGETS ICLIO
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS)
 
-set(CONDITIONLIST HAVE_GTEST_COND)
-set(ICLLibsToLinkAgainst "${GTEST_LIBS_l}")
-#add_gtest (${PROJECT_NAME} "test-image.cpp" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-
-if(UNIX AND HAVE_PROTOBUF_COND)
-  set(P ${CMAKE_SOURCE_DIR}/ICLIO/src/RSBImage.proto)
-  set(I ${CMAKE_SOURCE_DIR}/include/ICLIO/RSBImage.pb.h)
-  set(C ${CMAKE_SOURCE_DIR}/ICLIO/src/RSBImage.pb.cpp)
-  ADD_CUSTOM_COMMAND(OUTPUT ${C} ${I}
-    COMMAND ${PROTOC_CMD} RSBImage.proto --cpp_out=.
-    && mv "./RSBImage.pb.h" ${I}
-    && mv "./RSBImage.pb.cc" ${C}
-    && sed -i 's|"RSBImage.pb.h"|<ICLIO/RSBImage.pb.h>|g' ${C}
-    DEPENDS ${P}
-    WORKING_DIRECTORY "${CMAKE_SOURCE_DIR}/ICLIO/src")
-  set_source_files_properties(${I} ${C} PROPERTIES GENERATED TRUE)
-  set(LIB_SOURCES "${LIB_SOURCES};${I};${C}")
-
-endif()
-
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${LIB_SOURCES})
-else()
-add_library(${PROJECT_NAME} SHARED ${LIB_SOURCES})
-endif()
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLIO_dependencies})
-
-link_directories("${LIBRARY_OUTPUT_PATH}")
-if(WIN32)
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 #MINGW COMPATIBILITY 
-	ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ 
-	 WORLD_READ
-)
-endif()
-
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ 
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
+# ---- PKG-config ----
+CREATE_PKGCONFIG(NAME ICLIO
+                 LIBRARY_DEPS ${MESASR_LIBRARIES}
+			      ${ImageMagick_LIBRARIES}
+			      ${LIBDC_LIBRARIES}
+			      ${V4L_LIBRARIES}
+			      ${XINE_LIBRARIES}
+			      ${OPENGL_LIBRARIES}
+			      ${LIBFREENECT_LIBRARIES}
+			      ${PYLON_LIBRARIES}
+			      ${OPENNI_LIBRARIES}
+			      ${QT_LIBRARIES}
+			      ${RSB_LIBRARIES}
+			      ${PROTOBUF_LIBRARIES}
+                 PKGCONFIG_DEPS ICLFilter-${SO_VERSION})

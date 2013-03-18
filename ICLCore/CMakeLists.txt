@@ -1,28 +1,24 @@
 #*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
 #**                                                                 **
 #** File   : ICLCore/CMakeLists.txt                                 **
 #** Module : ICLCore                                                **
-#** Authors: Christian Groszewski                                   **
+#** Authors: Michael Goetting                                       **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,82 +27,98 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLCore)
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
-add_libsource (${PROJECT_NAME} "src/CoreFunctions.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImgBase.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImgBorder.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImgBuffer.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Img.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImgParams.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Line32f.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Line.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LineSampler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImageSerializer.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/BayerConverter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CCFunctions.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CCLUT.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Color.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Converter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FixedConverter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PseudoColorConverter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImageRenderer.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-set(CONDITIONLIST HAVE_OPENCV_COND)
-add_libsource (${PROJECT_NAME} "src/OpenCV.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(SOURCES src/ICLCore/BayerConverter.cpp
+            src/ICLCore/CCFunctions.cpp
+	    src/ICLCore/CCLUT.cpp
+	    src/ICLCore/Color.cpp
+	    src/ICLCore/Converter.cpp
+	    src/ICLCore/CoreFunctions.cpp
+	    src/ICLCore/FixedConverter.cpp
+	    src/ICLCore/ImageRenderer.cpp
+	    src/ICLCore/ImageSerializer.cpp
+	    src/ICLCore/ImgBase.cpp
+	    src/ICLCore/ImgBorder.cpp
+	    src/ICLCore/ImgBuffer.cpp
+	    src/ICLCore/Img.cpp
+	    src/ICLCore/ImgParams.cpp
+	    src/ICLCore/Line32f.cpp
+	    src/ICLCore/Line.cpp
+	    src/ICLCore/LineSampler.cpp
+	    src/ICLCore/ConvexHull.cpp
+	    src/ICLCore/PseudoColorConverter.cpp)
+          
+SET(HEADERS src/ICLCore/BayerConverter.h
+            src/ICLCore/CCFunctions.h
+	    src/ICLCore/CCLUT.h
+	    src/ICLCore/Channel.h
+	    src/ICLCore/ChromaAndRGBClassifier.h
+	    src/ICLCore/ChromaClassifier.h
+	    src/ICLCore/Color.h
+	    src/ICLCore/Converter.h
+	    src/ICLCore/CoreFunctions.h
+	    src/ICLCore/Core.h
+	    src/ICLCore/FixedConverter.h
+	    src/ICLCore/ImageRenderer.h
+	    src/ICLCore/ImageSerializer.h
+	    src/ICLCore/ImgBase.h
+	    src/ICLCore/ImgBorder.h
+	    src/ICLCore/ImgBuffer.h
+	    src/ICLCore/Img.h
+	    src/ICLCore/ImgIterator.h
+	    src/ICLCore/ImgParams.h
+	    src/ICLCore/Line32f.h
+	    src/ICLCore/Line.h
+	    src/ICLCore/LineSampler.h
+	    src/ICLCore/Parable.h
+	    src/ICLCore/PixelRef.h
+	    src/ICLCore/ConvexHull.h
+	    src/ICLCore/PseudoColorConverter.h
+	    src/ICLCore/Types.h)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME})
-add_example (${PROJECT_NAME} "img-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(OpenCV_FOUND)
+  LIST(APPEND SOURCES src/ICLCore/OpenCV.cpp)
+  LIST(APPEND HEADERS src/ICLCore/OpenCV.h)
+ENDIF()
 
-set(CONDITIONLIST HAVE_GTEST_COND)
-set(ICLLibsToLinkAgainst ICLCore)
-#add_gtest (${PROJECT_NAME} "test-image.cpp" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#set(ICLLibsToLinkAgainst "${GTEST_LIBS_l}" ICLQt)
-#add_gtest (${PROJECT_NAME} "converter-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Library build instructions ----
+INCLUDE_DIRECTORIES(BEFORE src
+                           ${ICL_SOURCE_DIR}/ICLUtils/src
+                           ${ICL_SOURCE_DIR}/ICLMath/src)
+	    
+ADD_LIBRARY(ICLCore SHARED ${SOURCES} ${HEADERS})
 
+# ---- 3rd party library handling ----
+TARGET_LINK_LIBRARIES(ICLCore ICLMath
+                              ${OpenCV_LIBRARIES})
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND HAVE_OPENGL_COND)
-set(ICLLibsToLinkAgainst "${GTEST_LIBS_l}" ICLQt)
-add_example (${PROJECT_NAME} "colorspace-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "pseudo-color-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "line-sampler-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET_TARGET_PROPERTIES(ICLCore
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
 
+# ---- Build examples ----
+IF(BUILD_EXAMPLES)
+  ADD_SUBDIRECTORY(examples)
+ENDIF()
 
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${LIB_SOURCES})
-else()
-add_library(${PROJECT_NAME} SHARED ${LIB_SOURCES})
-endif()
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLCore_dependencies})
+IF(BUILD_DEMOS)
+  ADD_SUBDIRECTORY(demos)
+ENDIF()
 
-link_directories("${LIBRARY_OUTPUT_PATH}")
-if(WIN32)
-install (TARGETS ${PROJECT_NAME} 
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 #MINGW COMPATIBILITY 
-	ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ 
-	 WORLD_READ
-)
-endif()
+# ---- Install specifications ----
+INSTALL(TARGETS ICLCore
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS)
 
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ 
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
+# ---- PKG-config ----
+#$(OpenCV_LIBS) contains the lib-names only -> prepend libdir
+#SET(OpenCV_PKG_LIBS "${OpenCV_")
+#FOREACH(L ${OpenCV_LIBRARIES})
+#  SET(OpenCV_PKG_LIBS "${OpenCV_PKG_LIBS} ${OpenCV_LIB_DIR}/lib${L}.so")
+#ENDFOREACH()
+
+CREATE_PKGCONFIG(NAME ICLCore
+                 LIBRARY_DEPS ${OpenCV_LIBRARIES}
+                 PKGCONFIG_DEPS ICLMath-${SO_VERSION})

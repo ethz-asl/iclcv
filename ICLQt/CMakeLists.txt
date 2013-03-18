@@ -1,28 +1,24 @@
-##*********************************************************************
+#*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
 #**                                                                 **
 #** File   : ICLQt/CMakeLists.txt                                   **
 #** Module : ICLQt                                                  **
-#** Authors: Christian Groszewski                                   **
+#** Authors: Michael Goetting                                       **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,189 +27,193 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLQt)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} )
+SET(SOURCES src/ICLQt/AbstractPlotWidget.cpp
+            src/ICLQt/Application.cpp
+	    src/ICLQt/BorderHandle.cpp
+	    src/ICLQt/ButtonGroupHandle.cpp
+	    src/ICLQt/ButtonHandle.cpp
+	    src/ICLQt/CamCfgWidget.cpp
+	    src/ICLQt/CheckBoxHandle.cpp
+	    src/ICLQt/ChromaClassifierIO.cpp	   
+	    src/ICLQt/ChromaGUI.cpp
+	    src/ICLQt/ColorLabel.cpp
+	    src/ICLQt/ComboHandle.cpp
+	    src/ICLQt/CompabilityLabel.cpp
+	    src/ICLQt/DataStore.cpp
+	    src/ICLQt/DefineRectanglesMouseHandler.cpp
+	    src/ICLQt/DefineQuadrangleMouseHandler.cpp
+	    src/ICLQt/DoubleSlider.cpp
+	    src/ICLQt/Dragger.cpp
+	    src/ICLQt/DragRectangleMouseHandler.cpp
+	    src/ICLQt/DrawHandle.cpp
+	    src/ICLQt/DrawHandle3D.cpp
+	    src/ICLQt/DrawWidget.cpp
+	    src/ICLQt/DrawWidget3D.cpp
+	    src/ICLQt/FloatHandle.cpp
+	    src/ICLQt/FSliderHandle.cpp
+	    src/ICLQt/GLPaintEngine.cpp
+            src/ICLQt/GLImg.cpp
+	    src/ICLQt/GLFragmentShader.cpp
+	    src/ICLQt/GLContext.cpp
+	    src/ICLQt/GUI.cpp
+	    src/ICLQt/GUIDefinition.cpp
+	    src/ICLQt/GUIWidget.cpp
+	    src/ICLQt/HistogrammWidget.cpp
+	    src/ICLQt/IconFactory.cpp
+	    src/ICLQt/ImageHandle.cpp
+	    src/ICLQt/ImgParamWidget.cpp
+	    src/ICLQt/IntHandle.cpp
+	    src/ICLQt/LabelHandle.cpp
+	    src/ICLQt/LowLevelPlotWidget.cpp
+	    src/ICLQt/MouseEvent.cpp
+	    src/ICLQt/MouseHandler.cpp
+	    src/ICLQt/MultiDrawHandle.cpp
+	    src/ICLQt/PlotHandle.cpp
+	    src/ICLQt/PlotWidget.cpp
+	    src/ICLQt/QImageConverter.cpp
+	    src/ICLQt/Quick.cpp
+	    src/ICLQt/SliderHandle.cpp
+	    src/ICLQt/SpinnerHandle.cpp
+	    src/ICLQt/StateHandle.cpp
+	    src/ICLQt/StringHandle.cpp
+	    src/ICLQt/StringSignalButton.cpp
+	    src/ICLQt/ThreadedUpdatableSlider.cpp
+	    src/ICLQt/ThreadedUpdatableTextView.cpp
+	    src/ICLQt/ToggleButton.cpp
+	    src/ICLQt/Widget.cpp)
 
-add_example (${PROJECT_NAME} "viewer" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "chromaticity-space-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "color-picker" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "gui-callback-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "gui-assignment-info" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "interactive-filter-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "camera-config" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "image-compare" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "define-rects-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET(HEADERS src/ICLQt/AbstractPlotWidget.h
+	    src/ICLQt/Application.h
+	    src/ICLQt/BorderBox.h
+	    src/ICLQt/BorderHandle.h
+	    src/ICLQt/BoxHandle.h
+	    src/ICLQt/ButtonGroupHandle.h
+	    src/ICLQt/ButtonHandle.h
+	    src/ICLQt/CamCfgWidget.h
+	    src/ICLQt/CheckBoxHandle.h
+	    src/ICLQt/ChromaClassifierIO.h
+	    src/ICLQt/ColorHandle.h
+	    src/ICLQt/ColorLabel.h
+	    src/ICLQt/ComboHandle.h
+	    src/ICLQt/Common.h
+	    src/ICLQt/CompabilityLabel.h
+	    src/ICLQt/ContainerGUIComponent.h
+	    src/ICLQt/ContainerGUIComponents.h
+	    src/ICLQt/ContainerHandle.h
+	    src/ICLQt/DataStore.h
+	    src/ICLQt/DefineRectanglesMouseHandler.h
+	    src/ICLQt/DefineQuadrangleMouseHandler.h
+	    src/ICLQt/DispHandle.h
+	    src/ICLQt/Dragger.h
+	    src/ICLQt/DragRectangleMouseHandler.h
+	    src/ICLQt/DrawHandle3D.h
+	    src/ICLQt/DrawHandle.h
+	    src/ICLQt/DrawWidget3D.h
+	    src/ICLQt/DrawWidget.h
+	    src/ICLQt/FloatHandle.h
+	    src/ICLQt/FPSHandle.h
+	    src/ICLQt/FSliderHandle.h
+	    src/ICLQt/GLContext.h
+	    src/ICLQt/GLFragmentShader.h
+	    src/ICLQt/GLImg.h
+	    src/ICLQt/GLPaintEngine.h
+	    src/ICLQt/GUIComponent.h
+	    src/ICLQt/GUIComponents.h
+	    src/ICLQt/GUIComponentWithOutput.h
+	    src/ICLQt/GUIDefinition.h
+	    src/ICLQt/GUI.h
+	    src/ICLQt/GUIHandleBase.h
+	    src/ICLQt/GUIHandle.h
+	    src/ICLQt/GUISyntaxErrorException.h
+	    src/ICLQt/HistogrammWidget.h
+	    src/ICLQt/IconFactory.h
+	    src/ICLQt/ImageHandle.h
+	    src/ICLQt/ImageStatistics.h
+	    src/ICLQt/IntHandle.h
+	    src/ICLQt/LabelHandle.h
+	    src/ICLQt/LowLevelPlotWidget.h
+	    src/ICLQt/MouseEvent.h
+	    src/ICLQt/PaintEngine.h
+	    src/ICLQt/PlotHandle.h
+	    src/ICLQt/PlotWidget.h
+	    src/ICLQt/ProxyLayout.h
+	    src/ICLQt/QImageConverter.h
+	    src/ICLQt/Qt.h
+	    src/ICLQt/Quick.h
+	    src/ICLQt/SliderHandle.h
+	    src/ICLQt/SliderUpdateEvent.h
+	    src/ICLQt/SpinnerHandle.h
+	    src/ICLQt/SplitterHandle.h
+	    src/ICLQt/StateHandle.h
+	    src/ICLQt/StringHandle.h
+	    src/ICLQt/TabHandle.h
+	    src/ICLQt/ThreadedUpdatableTextView.h
+	    src/ICLQt/ThreadedUpdatableWidget.h
+	    src/ICLQt/WidgetCaptureMode.h
+	    src/ICLQt/GLPaintEngine.h
+            src/ICLQt/GLImg.h
+	    src/ICLQt/DrawWidget3D.h
+	    src/ICLQt/DrawHandle3D.h
+	    src/ICLQt/GLFragmentShader.h
+	    src/ICLQt/GLContext.h
+	    src/ICLQt/Quick.h)
 
-#set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_OPENGL_COND)
-#add_example (${PROJECT_NAME} "3D-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+SET(ICL_MOC_HEADERS src/ICLQt/Widget.h
+                    src/ICLQt/MouseHandler.h
+                    src/ICLQt/DoubleSlider.h
+                    src/ICLQt/ImgParamWidget.h
+	            src/ICLQt/StringSignalButton.h
+	            src/ICLQt/GUIWidget.h
+	            src/ICLQt/ChromaGUI.h
+	            src/ICLQt/ThreadedUpdatableSlider.h
+	            src/ICLQt/MultiDrawHandle.h
+	            src/ICLQt/ToggleButton.h)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "configurable-gui-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "plot-component-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "model-fitting-example" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+# ---- Library build instructions ----
+INCLUDE_DIRECTORIES(BEFORE src
+                           ${ICL_SOURCE_DIR}/ICLUtils/src
+                           ${ICL_SOURCE_DIR}/ICLMath/src
+                           ${ICL_SOURCE_DIR}/ICLCore/src
+                           ${ICL_SOURCE_DIR}/ICLFilter/src
+                           ${ICL_SOURCE_DIR}/ICLIO/src)
 
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLCV)
-add_example (${PROJECT_NAME} "create-button-icon" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "gui-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "onscreen-button-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "xv" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+QT4_WRAP_CPP(MOC_FILES ${ICL_MOC_HEADERS})
 
+ADD_LIBRARY(ICLQt SHARED ${SOURCES} ${HEADERS} ${MOC_FILES})
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
+# ---- 3rd party library handling ----
+TARGET_LINK_LIBRARIES(ICLQt ICLIO
+                            ${OPENGL_LIBRARIES}
+			    ${GLEW_LIBRARIES})
 
-add_libsource (${PROJECT_NAME} "src/Qt.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/AbstractPlotWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LowLevelPlotWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PlotWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/PlotHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/BorderHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ButtonGroupHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ButtonHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ChromaGUI.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ChromaClassifierIO.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ComboHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CompabilityLabel.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DoubleSlider.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Dragger.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CheckBoxHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DrawHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StateHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DrawWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FloatHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FSliderHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET_TARGET_PROPERTIES(ICLQt
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
 
-add_libsource (${PROJECT_NAME} "src/GUI.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GUIDefinition.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GUIWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImageHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImgParamWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/IntHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LabelHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MouseHandler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DragRectangleMouseHandler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DefineRectanglesMouseHandler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MouseEvent.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MultiDrawHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/QImageConverter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SliderHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/SpinnerHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StringHandle.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/StringSignalButton.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Widget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/HistogrammWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CamCfgWidget.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ToggleButton.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Application.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/IconFactory.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ThreadedUpdatableTextView.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ThreadedUpdatableSlider.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DataStore.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ColorLabel.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+# ---- Build examples/ demos/ apps ----
+IF(BUILD_EXAMPLES)
+  ADD_SUBDIRECTORY(examples)
+ENDIF()
 
-set(CONDITIONLIST HAVE_OPENGL_COND)
-add_libsource (${PROJECT_NAME} "src/GLPaintEngine.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GLImg.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DrawWidget3D.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DrawHandle3D.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GLFragmentShader.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GLContext.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/Quick.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+IF(BUILD_DEMOS)
+  ADD_SUBDIRECTORY(demos)
+ENDIF()
 
-SET(HWQ_Qt4_SRC
-	"../include/ICLQt/Widget.h"
-	"../include/ICLQt/MouseHandler.h"
-	"../include/ICLQt/DoubleSlider.h"
-	"../include/ICLQt/ImgParamWidget.h"
-	"../include/ICLQt/StringSignalButton.h"
-	"../include/ICLQt/GUIWidget.h"
-	"../include/ICLQt/ChromaGUI.h"
-	"../include/ICLQt/ThreadedUpdatableSlider.h"
-	"../include/ICLQt/MultiDrawHandle.h"
-	"../include/ICLQt/ToggleButton.h"
-)
+IF(BUILD_APPS)
+  ADD_SUBDIRECTORY(apps)
+ENDIF()
 
+# ---- Install specifications ----
+INSTALL(TARGETS ICLQt
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS )
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" ICL_MOC_HEADERS )
 
-
-
-set(_moc_flags "")
-get_directory_property(_inc_DIRS INCLUDE_DIRECTORIES)
-set(framework_path ${QT_INCLUDE_PATH})
-foreach(_current ${_inc_DIRS})
-  if("${_current}" MATCHES ".framework/?$")
-    string(REGEX REPLACE "/[^/]+.framework" "" framework_path "${_current}")
-    set(_moc_flags ${_moc_flags} "-F${framework_path}")
-  else("${_current}" MATCHES ".framework/?$")
-    set(_moc_flags ${_moc_flags} "-I${_current}")
-  endif()
-endforeach()
-
-get_directory_property(_defines COMPILE_DEFINITIONS)
-foreach(_current ${_defines})
-  set(_moc_flags ${_moc_flags} "-D${_current}")
-endforeach(_current ${_defines})
-
-set(outfiles "")
-set(moc_options "")
-
-QT4_EXTRACT_OPTIONS(moc_files moc_options ${HWQ_Qt4_SRC})
-#set(moc_files ${HWQ_Qt4_SRC})
-#message(STATUS "add ${moc_files}")
-foreach(it ${moc_files})
-  GET_FILENAME_COMPONENT(it ${it} ABSOLUTE)
-  QT4_MAKE_OUTPUT_FILE(${it} moc_ cxx outfile)
-  #SET(outfiles ${outfiles} ${outfile})
-  ADD_CUSTOM_COMMAND(OUTPUT ${outfile}
-                      COMMAND ${QT_MOC_EXECUTABLE}
-                      ARGS ${_moc_flags} ${moc_options} -o ${outfile} ${it}
-                      DEPENDS ${it})
-  set(outfiles ${outfiles} ${outfile})	
-endforeach()
-set(HWQ_SRC ${LIB_SOURCES} ${outfiles})
-#endif()
-
-set(CONDITIONLIST "HAVE_GTEST_COND")
-set(ICLLibsToLinkAgainst "${GTEST_LIBS_l}")
-#add_gtest (${PROJECT_NAME} "test-image.cpp" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${HWQ_SRC})
-else()
-add_library(${PROJECT_NAME} SHARED ${HWQ_SRC})
-endif()
-#target_link_libraries(${PROJECT_NAME} ${HWQ_LIB} )
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLQt_dependencies})
-
-link_directories("${LIBRARY_OUTPUT_PATH}")
-
-if(WIN32)
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 #MINGW COMPATIBILITY 
-	ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ 
-	 WORLD_READ
-)
-endif()
-
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ 
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
+# ---- PKG-config ----
+CREATE_PKGCONFIG(NAME ICLQt
+                 LIBRARY_DEPS ${OPENGL_LIBRARIES}
+ 		              ${GLEW_LIBRARIES}
+                 PKGCONFIG_DEPS ICLIO-${SO_VERSION})

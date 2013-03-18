@@ -1,28 +1,24 @@
 #*********************************************************************
 #**                Image Component Library (ICL)                    **
 #**                                                                 **
-#** Copyright (C) 2006-2010 CITEC, University of Bielefeld          **
+#** Copyright (C) 2006-2013 CITEC, University of Bielefeld          **
 #**                         Neuroinformatics Group                  **
 #** Website: www.iclcv.org and                                      **
 #**          http://opensource.cit-ec.de/projects/icl               **
 #**                                                                 **
 #** File   : ICLFilter/CMakeLists.txt                               **
 #** Module : ICLFilter                                              **
-#** Authors: Christian Groszewski                                   **
+#** Authors: Michael Goetting                                       **
 #**                                                                 **
 #**                                                                 **
-#** Commercial License                                              **
-#** ICL can be used commercially, please refer to our website       **
-#** www.iclcv.org for more details.                                 **
+#** GNU LESSER GENERAL PUBLIC LICENSE                               **
+#** This file may be used under the terms of the GNU Lesser General **
+#** Public License version 3.0 as published by the                  **
 #**                                                                 **
-#** GNU General Public License Usage                                **
-#** Alternatively, this file may be used under the terms of the     **
-#** GNU General Public License version 3.0 as published by the      **
 #** Free Software Foundation and appearing in the file LICENSE.GPL  **
 #** included in the packaging of this file.  Please review the      **
-#** following information to ensure the GNU General Public License  **
-#** version 3.0 requirements will be met:                           **
-#** http://www.gnu.org/copyleft/gpl.html.                           **
+#** following information to ensure the license requirements will   **
+#** be met: http://www.gnu.org/licenses/lgpl-3.0.txt                **
 #**                                                                 **
 #** The development of this software was supported by the           **
 #** Excellence Cluster EXC 277 Cognitive Interaction Technology.    **
@@ -31,113 +27,135 @@
 #** Excellence Initiative.                                          **
 #**                                                                 **
 #*********************************************************************
-project(ICLFilter)
 
-set(CONDITIONLIST "")
-#sources for lib
-set(LIB_SOURCES "")
-add_libsource (${PROJECT_NAME} "src/AffineOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/BinaryArithmeticalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/BinaryCompareOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/BinaryLogicalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ChamferOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ColorDistanceOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ConvolutionKernel.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ConvolutionOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/DynamicConvolutionOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GaborOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/GradientImage.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ImageSplitter.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/InplaceArithmeticalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/InplaceLogicalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/IntegralImgOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LocalThresholdOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LUTOp3Channel.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/LUTOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MedianOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MirrorOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MorphologicalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/NeighborhoodOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/OpROIHandler.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ThresholdOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/UnaryArithmeticalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/UnaryCompareOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/UnaryLogicalOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/UnaryOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/BinaryOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/UnaryOpPipe.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/WeightChannelsOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/WeightedSumOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/WarpOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/FFTOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/IFFTOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/MotionSensitiveTemporalSmoothing.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-if(NOT APPLE)
-add_libsource (${PROJECT_NAME} "src/ColorSegmentationOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-endif()
-set(CONDITIONLIST HAVE_IPP_COND)
-add_libsource (${PROJECT_NAME} "src/WienerOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/CannyOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
-add_libsource (${PROJECT_NAME} "src/ProximityOp.cpp" "${CONDITIONLIST}" LIB_SOURCES)
+SET(SOURCES src/ICLFilter/AffineOp.cpp
+            src/ICLFilter/BinaryArithmeticalOp.cpp
+	    src/ICLFilter/BinaryCompareOp.cpp
+	    src/ICLFilter/BinaryLogicalOp.cpp
+	    src/ICLFilter/BinaryOp.cpp
+	    src/ICLFilter/ChamferOp.cpp
+	    src/ICLFilter/ColorDistanceOp.cpp
+	    src/ICLFilter/ColorSegmentationOp.cpp
+	    src/ICLFilter/ConvolutionKernel.cpp
+	    src/ICLFilter/ConvolutionOp.cpp
+	    src/ICLFilter/DynamicConvolutionOp.cpp
+	    src/ICLFilter/FFTOp.cpp
+	    src/ICLFilter/GaborOp.cpp
+	    src/ICLFilter/GradientImage.cpp
+	    src/ICLFilter/IFFTOp.cpp
+	    src/ICLFilter/ImageSplitter.cpp
+	    src/ICLFilter/InplaceArithmeticalOp.cpp
+	    src/ICLFilter/InplaceLogicalOp.cpp
+	    src/ICLFilter/IntegralImgOp.cpp
+	    src/ICLFilter/LUTOp.cpp
+	    src/ICLFilter/LUTOp3Channel.cpp
+	    src/ICLFilter/LocalThresholdOp.cpp
+	    src/ICLFilter/MedianOp.cpp
+	    src/ICLFilter/MirrorOp.cpp
+	    src/ICLFilter/MorphologicalOp.cpp
+	    src/ICLFilter/MotionSensitiveTemporalSmoothing.cpp
+	    src/ICLFilter/NeighborhoodOp.cpp
+	    src/ICLFilter/OpROIHandler.cpp
+	    src/ICLFilter/ThresholdOp.cpp
+	    src/ICLFilter/UnaryArithmeticalOp.cpp
+	    src/ICLFilter/UnaryCompareOp.cpp
+	    src/ICLFilter/UnaryLogicalOp.cpp
+	    src/ICLFilter/UnaryOp.cpp
+	    src/ICLFilter/UnaryOpPipe.cpp
+	    src/ICLFilter/WarpOp.cpp
+	    src/ICLFilter/WeightChannelsOp.cpp
+	    src/ICLFilter/WeightedSumOp.cpp
+	    src/ICLFilter/ImageRectification.cpp)
 
-set(CONDITIONLIST BUILD_EXAMPLES)
+SET(HEADERS src/ICLFilter/AffineOp.h
+            src/ICLFilter/BaseAffineOp.h
+            src/ICLFilter/BinaryArithmeticalOp.h
+	    src/ICLFilter/BinaryCompareOp.h
+	    src/ICLFilter/BinaryLogicalOp.h
+	    src/ICLFilter/BinaryOp.h
+	    src/ICLFilter/ChamferOp.h
+	    src/ICLFilter/ColorDistanceOp.h
+	    src/ICLFilter/ColorSegmentationOp.h
+	    src/ICLFilter/ConvolutionKernel.h
+	    src/ICLFilter/ConvolutionOp.h
+	    src/ICLFilter/DynamicConvolutionOp.h
+	    src/ICLFilter/FFTOp.h
+	    src/ICLFilter/Filter.h
+	    src/ICLFilter/GaborOp.h
+	    src/ICLFilter/GradientImage.h
+	    src/ICLFilter/IFFTOp.h
+	    src/ICLFilter/ImageSplitter.h
+	    src/ICLFilter/InplaceArithmeticalOp.h
+	    src/ICLFilter/InplaceLogicalOp.h
+	    src/ICLFilter/InplaceOp.h
+	    src/ICLFilter/IntegralImgOp.h
+	    src/ICLFilter/LUT2D.h
+	    src/ICLFilter/LUTOp.h
+	    src/ICLFilter/LUTOp3Channel.h
+	    src/ICLFilter/LocalThresholdOp.h
+	    src/ICLFilter/MedianOp.h
+	    src/ICLFilter/MirrorOp.h
+	    src/ICLFilter/MorphologicalOp.h
+	    src/ICLFilter/MotionSensitiveTemporalSmoothing.h
+	    src/ICLFilter/NeighborhoodOp.h
+	    src/ICLFilter/OpROIHandler.h
+	    src/ICLFilter/RotateOp.h
+	    src/ICLFilter/ScaleOp.h
+	    src/ICLFilter/ThresholdOp.h
+	    src/ICLFilter/TranslateOp.h
+	    src/ICLFilter/UnaryArithmeticalOp.h
+	    src/ICLFilter/UnaryCompareOp.h
+	    src/ICLFilter/UnaryLogicalOp.h
+	    src/ICLFilter/UnaryOp.h
+	    src/ICLFilter/UnaryOpPipe.h
+	    src/ICLFilter/UnaryOpWork.h
+	    src/ICLFilter/WarpOp.h
+	    src/ICLFilter/WeightChannelsOp.h
+	    src/ICLFilter/WeightedSumOp.h
+            src/ICLFilter/ImageRectification.h)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_IPP_COND HAVE_QT_COND)
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLQt)
-add_example (${PROJECT_NAME} "canny-op-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+IF(IPP_FOUND)
+  LIST(APPEND SOURCES src/ICLFilter/WienerOp.cpp
+                      src/ICLFilter/CannyOp.cpp
+		      src/ICLFilter/ProximityOp.cpp)
 
-set(CONDITIONLIST ICL_VAR_BUILD_EXAMPLES HAVE_QT_COND)
-add_example (${PROJECT_NAME} "local-thresh" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "gabor-op-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "convolution-op-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "warp-op-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "affine-op-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "filter-array" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "fft-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-add_example (${PROJECT_NAME} "temporal-smoothing-demo" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-
-set(ICLLibsToLinkAgainst ${PROJECT_NAME} ICLGeom)
-add_example (${PROJECT_NAME} "color-segmentation" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-
-set(CONDITIONLIST HAVE_GTEST_COND)
-set(ICLLibsToLinkAgainst ICLFilter ICLCore)
-add_gtest (${PROJECT_NAME} "unary-op-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "morphological-op-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
-#add_gtest (${PROJECT_NAME} "champfer-op-test" "${CONDITIONLIST}" ICLLibsToLinkAgainst)
+  LIST(APPEND HEADERS src/ICLFilter/WienerOp.h
+                      src/ICLFilter/CannyOp.h
+		      src/ICLFilter/ProximityOp.h)	    
+ENDIF()
 
 
-#create lib
-if(WIN32)
-add_library(${PROJECT_NAME} ${LIB_SOURCES})
-else()
-add_library(${PROJECT_NAME} SHARED ${LIB_SOURCES})
-endif()
-#linker
-target_link_libraries(${PROJECT_NAME} ${ICLFilter_dependencies})
+# ---- Library build instructions ----
+INCLUDE_DIRECTORIES(BEFORE src
+                           ${ICL_SOURCE_DIR}/ICLUtils/src
+                           ${ICL_SOURCE_DIR}/ICLMath/src
+                           ${ICL_SOURCE_DIR}/ICLCore/src)
 
-link_directories("${LIBRARY_OUTPUT_PATH}")
-if(WIN32)
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 #MINGW COMPATIBILITY 
-	ARCHIVE DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	RUNTIME DESTINATION "${LIBRARY_OUTPUT_PATH}")
-else()
-install (TARGETS ${PROJECT_NAME}
- 	 LIBRARY DESTINATION "${LIBRARY_OUTPUT_PATH}"
-	 PERMISSIONS OWNER_WRITE OWNER_READ
-	 GROUP_WRITE GROUP_READ 
-	 WORLD_READ
-)
-endif()
+ADD_LIBRARY(ICLFilter SHARED ${SOURCES} ${HEADERS})
 
-install (DIRECTORY ${CMAKE_SOURCE_DIR}/include/${PROJECT_NAME}
-         DESTINATION ${CMAKE_INSTALL_PREFIX}/include/icl-${VERSION}${DEBUG_POSTFIX}
-		 FILE_PERMISSIONS OWNER_WRITE OWNER_READ GROUP_WRITE GROUP_READ WORLD_READ
-		 DIRECTORY_PERMISSIONS OWNER_EXECUTE OWNER_WRITE OWNER_READ
-		 	GROUP_EXECUTE GROUP_WRITE GROUP_READ 
-		 	WORLD_READ WORLD_EXECUTE
-		 FILES_MATCHING PATTERN "*.h"
-		 REGEX .svn* EXCLUDE
-)
-add_doc_gen(${PROJECT_NAME})
+# ---- 3rd party library handling ----
+TARGET_LINK_LIBRARIES(ICLFilter ICLCore)
+
+SET_TARGET_PROPERTIES(ICLFilter
+                      PROPERTIES 
+		      VERSION ${SO_VERSION})
+
+# ---- Build examples/ demos/ apps ----
+IF(BUILD_DEMOS)
+  ADD_SUBDIRECTORY(demos)
+ENDIF()
+
+IF(BUILD_APPS)
+  ADD_SUBDIRECTORY(apps)
+ENDIF()
+
+# ---- Install specifications ----
+INSTALL(TARGETS ICLFilter
+        RUNTIME DESTINATION bin
+        LIBRARY DESTINATION lib
+        ARCHIVE DESTINATION lib)
+INSTALL_FILES_RECURSIVE("include/${INSTALL_PATH_PREFIX}" HEADERS)
+
+# ---- PKG-config ----
+CREATE_PKGCONFIG(NAME ICLFilter
+                 PKGCONFIG_DEPS ICLCore-${SO_VERSION})
