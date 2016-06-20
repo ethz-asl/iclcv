@@ -130,7 +130,7 @@ namespace icl{
     #ifdef ICL_SYSTEM_WINDOWS
       Sleep(secs * 1000);
     #elif ICL_SYSTEM_APPLE
-      usleep(msecs * 1000000);
+      usleep(secs * 1000000);
     #else
       ::usleep((long)secs * 1000000);
     #endif
