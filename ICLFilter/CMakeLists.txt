@@ -53,11 +53,13 @@ SET(SOURCES src/ICLFilter/AffineOp.cpp
 	    src/ICLFilter/LocalThresholdOp.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_8u_true.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_16s_true.cpp
+	    src/ICLFilter/LocalThresholdOpHelpers_16u_true.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_32s_true.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_32f_true.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_64f_true.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_8u_false.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_16s_false.cpp
+	    src/ICLFilter/LocalThresholdOpHelpers_16u_false.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_32s_false.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_32f_false.cpp
 	    src/ICLFilter/LocalThresholdOpHelpers_64f_false.cpp
@@ -173,7 +175,7 @@ ADD_LIBRARY(ICLFilter SHARED ${SOURCES} ${HEADERS} ${KERNEL})
 TARGET_LINK_LIBRARIES(ICLFilter ICLCore)
 
 SET_TARGET_PROPERTIES(ICLFilter
-                      PROPERTIES 
+                      PROPERTIES
 		      VERSION ${SO_VERSION})
 
 # ---- Build examples/ demos/ apps ----
