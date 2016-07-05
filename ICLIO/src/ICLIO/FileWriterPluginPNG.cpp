@@ -92,7 +92,7 @@ namespace icl{
       uint32_t num_bytes = 1;
       uint32_t bits = 8;
       // we can only guarantee the 16 bit resolution for 1-channel grey-scale images!
-      if ((d == depth16s || d == dpeth16u ) && c == 1) {
+      if ((d == depth16s || d == depth16u ) && c == 1) {
         bits = 16;
         num_bytes = 2;
       }
