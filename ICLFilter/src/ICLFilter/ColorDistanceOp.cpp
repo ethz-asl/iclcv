@@ -64,6 +64,7 @@ namespace icl{
 
       const icl8u ref8u [3] = { (icl8u)m_refColor[0], (icl8u)m_refColor[1], (icl8u)m_refColor[2] };
       const icl16s ref16s[3] = { (icl16s)m_refColor[0], (icl16s)m_refColor[1], (icl16s)m_refColor[2] };
+      const icl16u ref16u[3] = { (icl16u)m_refColor[0], (icl16u)m_refColor[1], (icl16u)m_refColor[2] };
       const icl32s ref32s[3] = { (icl32s)m_refColor[0], (icl32s)m_refColor[1], (icl32s)m_refColor[2] };
       const icl32f ref32f[3] = { (icl32f)m_refColor[0], (icl32f)m_refColor[1], (icl32f)m_refColor[2] };
       const icl64f ref64f[3] = { (icl64f)m_refColor[0], (icl64f)m_refColor[1], (icl64f)m_refColor[2] };
