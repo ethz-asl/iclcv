@@ -65,6 +65,9 @@ namespace icl{
         case IPL_DEPTH_16S:{
           interleavedToPlanar((icl16s*)image->imageData,dst,image->widthStep);
           break;}
+        case IPL_DEPTH_16U:{
+          interleavedToPlanar((icl16u*)image->imageData,dst,image->widthStep);
+          break;}
         case IPL_DEPTH_32S:{
           interleavedToPlanar((icl32s*)image->imageData,dst,image->widthStep);
           break;}
@@ -122,6 +125,9 @@ namespace icl{
           case IPL_DEPTH_16S:{
             temp = ipl_to_img_srcpref<icl16s,icl16s>(image,dst);
             break;}
+          case IPL_DEPTH_16U:{
+            temp = ipl_to_img_srcpref<icl16u,icl16u>(image,dst);
+            break;}
           case IPL_DEPTH_32S:{
             temp = ipl_to_img_srcpref<icl32s,icl32s>(image,dst);
             break;}
@@ -147,7 +153,7 @@ namespace icl{
 
     template<typename SRC_T,typename DST_T>
     inline IplImage* img_to_ipl_srcpref(const ImgBase *src, IplImage **dst){
-      static const int IPL_DEPTHS[] = {(int)IPL_DEPTH_8U,(int)IPL_DEPTH_16S,(int)IPL_DEPTH_32S,(int)IPL_DEPTH_32F,(int)IPL_DEPTH_64F};
+      static const int IPL_DEPTHS[] = {(int)IPL_DEPTH_8U,(int)IPL_DEPTH_16S,(int)IPL_DEPTH_16U,(int)IPL_DEPTH_32S,(int)IPL_DEPTH_32F,(int)IPL_DEPTH_64F};
       CvSize s = cvSize(src->getWidth(),src->getHeight());
 
       IplImage *ipl = ensureCompatible(dst,IPL_DEPTHS[(int)src->getDepth()],s,src->getChannels());
@@ -181,6 +187,9 @@ namespace icl{
           break;}
         case IPL_DEPTH_16S:{
           planarToInterleaved(&src,(icl16s*)dst->imageData);
+          break;}
+        case IPL_DEPTH_16U:{
+          planarToInterleaved(&src,(icl16u*)dst->imageData);
           break;}
         case IPL_DEPTH_32S:{
           planarToInterleaved(&src,(icl32s*)dst->imageData);
