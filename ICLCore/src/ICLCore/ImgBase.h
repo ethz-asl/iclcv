@@ -410,10 +410,10 @@ namespace icl {
       /** @{ @name asImg<T> cast templates */
       /// dynamically casts this image to one of its Img<T> subclasses
       /** This function performs an emulated dynamic_cast on this image and
-          returns a Img<T>*. If this image can not be casted to the the template
+          returns a Img<T>*. If this image can not be casted to the template
           type that is specified by the template parameter T, a NULL-pointer is
           returned. To avoid an expensive RTTI-runtime check using dynamic_cast,
-          this images depth is compared the the depth associated the the template
+          this image's depth is compared with the depth associated to the template
           parameter T.
           @return Img<T>* instance of this image
           **/
