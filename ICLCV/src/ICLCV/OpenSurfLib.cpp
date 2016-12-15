@@ -54,6 +54,7 @@
 #else
 #include <opencv2/highgui/highgui_c.h>
 #endif
+#include <opencv2/calib3d/calib3d.hpp>
 
 
 namespace icl{
