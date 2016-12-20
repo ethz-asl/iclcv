@@ -44,12 +44,12 @@ namespace icl{
   using namespace filter;
 
   namespace cv{
-    
+
     struct ORBFeatureDetector::Data{
       SmartPtr<ocv::ORB> orb;
       MatWrapper inputBuffer;
       ocv::Ptr<ocv::DescriptorMatcher> matcher;
-      
+
       LocalThresholdOp lt;
       Img8u ltBuffer;
       const ImgBase *lastInputImage;
@@ -81,21 +81,21 @@ namespace icl{
                   pyLevels != other.pyLevels ||
                   pyScale != other.pyScale ||
                   pyLevel0 != other.pyLevel0);
-          
+
         }
       } params;
-      
+
       void updateORB(ParamSet p){
         if(p != params){
           if(p.patchSize/pow(p.pyScale,p.pyLevels) < 2){
             p.patchSize = 2*pow(p.pyScale,p.pyLevels);
-            WARNING_LOG("patch size was increased to " << p.patchSize << " to ensure proper operation"); 
+            WARNING_LOG("patch size was increased to " << p.patchSize << " to ensure proper operation");
           }
           params = p;
-          orb = new ocv::ORB(p.maxFeatures, p.pyScale, p.pyLevels, 
-                             p.patchSize, p.pyLevel0, p.WTA_K, 
-                             ( p.scoreType == 0 ? 
-                               ocv::ORB::HARRIS_SCORE : 
+          orb = new ocv::ORB(p.maxFeatures, p.pyScale, p.pyLevels,
+                             p.patchSize, p.pyLevel0, p.WTA_K,
+                             ( p.scoreType == 0 ?
+                               ocv::ORB::HARRIS_SCORE :
                                ocv::ORB::FAST_SCORE ),
                              p.patchSize);
         }
@@ -105,11 +105,11 @@ namespace icl{
       std::vector<ocv::KeyPoint> keyPoints;
       MatWrapper descriptors;
     };
-    
+
     ORBFeatureDetector::ORBFeatureDetector() : m_data(new Data){
-      
+
       m_data->matcher = ocv::DescriptorMatcher::create("BruteForce");
-      
+
       addProperty("contrast adjustment.on","flag","",false);
       addProperty("contrast adjustment.slope","range","[0.05,20]",1);
       addProperty("contrast adjustment.mask size","range","[3,100]:1",10);
@@ -136,14 +136,14 @@ namespace icl{
       addProperty("bench.matching time","info","","??? ms",0,"Last feature matching step");
 
       m_data->updateORB(Data::ParamSet(*this));
-      
+
       m_data->ltBuffer = Img8u(Size(1,1),1);
       m_data->grayInputBuffer = Img8u(Size(1,1),formatGray);
     }
     ORBFeatureDetector::~ORBFeatureDetector(){
       delete m_data;
     }
-    
+
     ORBFeatureDetector::FeatureSetClass::FeatureSetClass(){
       impl = new Impl;
     }
@@ -165,10 +165,10 @@ namespace icl{
       for(size_t i=0;i<impl->keyPoints.size();++i){
         const ocv::KeyPoint &k = impl->keyPoints[i];
         float s = k.size / 2;
-        
+
         float cx = k.pt.x;
         float cy = k.pt.y;
-        
+
         d.color(0,255,0,255);
 
         if(k.angle != -1){
@@ -181,7 +181,7 @@ namespace icl{
 
         d.linewidth(1);
         d.color(0,100,255,255);
-        
+
         d.fill(255,0,0,0);
         d.circle(cx,cy,s);
       }
@@ -195,13 +195,13 @@ namespace icl{
 
     ORBFeatureDetector::FeatureSet ORBFeatureDetector::detect(const core::Img8u &image){
       bool bench = getPropertyValue("bench.enable");
-      
+
       m_data->updateORB(Data::ParamSet(*this));
 
       Time t = Time::now();
 
       m_data->lastInputImage = &image;
-      
+
       if(image.getFormat() != formatGray){
         cc(&image, &m_data->grayInputBuffer);
       }else{
@@ -230,33 +230,32 @@ namespace icl{
 
       FeatureSetClass *ret = new FeatureSetClass;
 
-      m_data->orb->operator()(m_data->inputBuffer.mat,
-                              ocv::noArray(),
-                              ret->impl->keyPoints, 
-                              ret->impl->descriptors.mat);
+      m_data->orb->detectAndCompute(m_data->inputBuffer.mat, ocv::noArray(),
+                                    ret->impl->keyPoints,
+                                    ret->impl->descriptors.mat);
 
       if(bench){
-        setPropertyValue("bench.ORB extraction time",bench_time_string(tOrb.age()));      
-        setPropertyValue("bench.detection time",bench_time_string(t.age()));      
+        setPropertyValue("bench.ORB extraction time",bench_time_string(tOrb.age()));
+        setPropertyValue("bench.detection time",bench_time_string(t.age()));
       }
 
       return SmartPtr<FeatureSetClass>(ret);
     }
-      
-    std::vector<ORBFeatureDetector::Match> 
-    ORBFeatureDetector::match(const ORBFeatureDetector::FeatureSet &a, 
+
+    std::vector<ORBFeatureDetector::Match>
+    ORBFeatureDetector::match(const ORBFeatureDetector::FeatureSet &a,
                               const ORBFeatureDetector::FeatureSet &b){
 
       bool bench = getPropertyValue("bench.enable");
       Time t = Time::now();
-            
+
       std::vector<ocv::DMatch> matches;
       m_data->matcher->match(a->impl->descriptors.mat, b->impl->descriptors.mat,
                              matches);
-      
+
       const std::vector<ocv::KeyPoint> &k1 = a->impl->keyPoints;
       const std::vector<ocv::KeyPoint> &k2 = b->impl->keyPoints;
-      
+
       std::vector<Match> ret(matches.size());
       for(size_t i=0;i<ret.size();++i){
         const ocv::DMatch &m = matches[i];
@@ -276,9 +275,9 @@ namespace icl{
       }
 
       if(bench){
-        setPropertyValue("bench.matching time",bench_time_string(t.age()));      
+        setPropertyValue("bench.matching time",bench_time_string(t.age()));
       }
-      
+
       return ret;
 
     }
