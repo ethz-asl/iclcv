@@ -40,23 +40,23 @@ using namespace icl::core;
 
 namespace icl{
   namespace cv{
-  
+
     struct OpenCVCamCalib::Data{
       int bWidth;
       int bHeight;
       int cornerCount;
       int successes;
       int bSize;
-  
+
       CvMat* image_points;
       CvMat* object_points;
       CvMat* point_counts;
       CvMat* intrinsic_matrix;
       CvMat* distortion_coeffs;
       CvPoint2D32f* corners;
-  
+
       CvSize imgSize;
-  
+
       Data(unsigned int boardWitdth, unsigned int boardHeigt, unsigned int boardCount):
         bWidth(boardWitdth),bHeight(boardHeigt),cornerCount(0),successes(0),bSize(bWidth*bHeight){
         image_points = cvCreateMat(boardCount*bSize, 2, CV_32FC1);
@@ -127,8 +127,10 @@ namespace icl{
       //CvSize boardSize = cvSize(m_data->bWidth, m_data->bHeight);
 
       //TODO allow params
-      int found = cvFindChessboardCorners(image, cvSize(m_data->bWidth, m_data->bHeight), m_data->corners,
-                                          &(m_data->cornerCount), CV_CALIB_CB_ADAPTIVE_THRESH | CV_CALIB_CB_FILTER_QUADS);
+      int found = cv::cvFindChessboardCorners(
+          image, cvSize(m_data->bWidth, m_data->bHeight), m_data->corners,
+          &(m_data->cornerCount),
+          cv::CALIB_CB_ADAPTIVE_THRESH | cv::CALIB_CB_FILTER_QUADS);
       if(found == 0)
         return m_data->successes;
       m_data->imgSize = cvGetSize(image);
@@ -181,8 +183,10 @@ namespace icl{
         CV_MAT_ELEM(*(m_data->intrinsic_matrix), float, 0, 0) = 1.0;
         CV_MAT_ELEM(*(m_data->intrinsic_matrix), float, 1, 1) = 1.0;
         //TODO allow more params
-        cvCalibrateCamera2(object_points2, image_points2, point_counts2, m_data->imgSize,
-                           m_data->intrinsic_matrix, m_data->distortion_coeffs, NULL, NULL, CV_CALIB_FIX_ASPECT_RATIO);
+        cv::cvCalibrateCamera2(object_points2, image_points2, point_counts2,
+                               m_data->imgSize, m_data->intrinsic_matrix,
+                               m_data->distortion_coeffs, NULL, NULL,
+                               cv::CALIB_FIX_ASPECT_RATIO);
         cvReleaseMat(&object_points2);
         cvReleaseMat(&image_points2);
         cvReleaseMat(&point_counts2);
