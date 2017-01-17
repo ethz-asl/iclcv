@@ -37,9 +37,10 @@ namespace icl{
     namespace {
       template<class TT>
       struct ThreshType{ typedef TT T; };
-      
+
       template<> struct ThreshType<uint8_t> { typedef int T; };
       template<> struct ThreshType<int16_t> { typedef int T; };
+      template<> struct ThreshType<uint16_t> { typedef int T; };
       template<> struct ThreshType<int32_t> { typedef int T; };
       template<> struct ThreshType<float> { typedef float T; };
       template<> struct ThreshType<double> { typedef double T; };
@@ -48,18 +49,19 @@ namespace icl{
 
       typedef uint8_t lt_icl8u;
       typedef int16_t lt_icl16s;
+      typedef uint16_t lt_icl16u;
       typedef int32_t lt_icl32s;
       typedef float   lt_icl32f;
       typedef double  lt_icl64f;
     }
-    /// Internally used helper function 
+    /// Internally used helper function
     /** This function was outsourced to optimize the compilation times by better
         exploiting multi-threaded compilation. The actual template instantiation of
         this function is spread over 10 source-files. */
     template<class TS,  class TI, class TD, class TT, bool WITH_GAMMA>
     void fast_lt(const TS *psrc, const TI *ii, TD *pdst, int w, int h, int r, TT t, float gs, int channel);
 
-    /// Internally used helper function 
+    /// Internally used helper function
     /** This function was outsourced to optimize the compilation times by better
         exploiting multi-threaded compilation */
     template<class TS,  class TI, class TD, class TT, bool WITH_GAMMA>
@@ -68,38 +70,38 @@ namespace icl{
       const int yEnd = h-r;
       const int dim = r2*r2;
       t*=dim; // help to avoid /dim in the loop
-      
+
       /* Explanation
           B-----C
           |     |
           |  x<-|--- here we are mean value in rect is B - C - D + A
           |     |
           D-----A
-  
-          Image parts for all border Regions (id = 1..8) we have to 
+
+          Image parts for all border Regions (id = 1..8) we have to
           work with a pixel dependend rectangle dimension
-          
+
           1|       2       |3
           -------------------
-          |               | 
+          |               |
           4|    CENTER     |5
           |               |
           -------------------
           6|       7       |8
           */
-    
+
 #define GET_II(x,y) ii[(x)+(y)*w]
 #define GET_A(rx,ry,rw,rh) GET_II((rx+rw),(ry+rh))
 #define GET_B(rx,ry,rw,rh) GET_II((rx),(ry))
 #define GET_C(rx,ry,rw,rh) GET_II((rx+rw),(ry))
 #define GET_D(rx,ry,rw,rh) GET_II((rx),(ry+rh))
-  
+
 #define GET_RECT(rx,ry,rw,rh) (GET_B((rx),(ry),(rw),(rh)) - GET_C((rx),(ry),(rw),(rh)) - GET_D((rx),(ry),(rw),(rh)) + GET_A((rx),(ry),(rw),(rh)) + t)
 #define COMPLEX_STEP(rx,ry,rw,rh) pdst[x+w*y] = (!WITH_GAMMA) ?         \
       (255 * (psrc[x+w*y]*((rw)*(rh)) > (GET_RECT((rx),(ry),(rw),(rh)))) ) : \
       ((TD)lt_clip_float( gs * (psrc[x+w*y] - float(GET_RECT((rx),(ry),(rw),(rh)))/((rw)*(rh)) ) + 128))
-  
-  
+
+
       // [1][2][3]
       for(int y=0;y<r;++y){
         for(int x=0;x<r;++x){    //[1]
@@ -119,7 +121,7 @@ namespace icl{
         for(int x=0;x<r;++x){
           COMPLEX_STEP(0,y-r,x+r,r2);
         }
-        
+
         // [CENTER]
         const TI *B = ii+(y-r)*w;
         const TI *C = B + r2;
@@ -128,18 +130,18 @@ namespace icl{
         const TS *s = psrc+y*w + r;
         TD *d = pdst+y*w + r;
         const TS *ends = s+w-r2;
-        
+
 #define STEP *d = (!WITH_GAMMA) ?                                       \
         (255 * ( (*s*dim) > (*B - *C - *D + *A + t))) :                 \
         ((TD)lt_clip_float( gs * (*s - float(*B - *C - *D + *A + t)/dim ) + 128)) \
         ;  ++B; ++C; ++D; ++A; ++s; ++d;
-        
+
         // 16x loop unrolling here
         for(int n = ((int)(ends-s)) >> 4; n > 0; --n){
           STEP STEP STEP STEP STEP STEP STEP STEP
-          STEP STEP STEP STEP STEP STEP STEP STEP  
+          STEP STEP STEP STEP STEP STEP STEP STEP
           }
-        
+
         while(s<ends){
           STEP
           }
@@ -149,7 +151,7 @@ namespace icl{
           COMPLEX_STEP(x-r,y-r,w+r-x-1,r2);
         }
       }
-      
+
       // [6][7][8]
       for(int y=h-r;y<h;++y){
         for(int x=0;x<r;++x){    //[6]
@@ -182,7 +184,7 @@ namespace icl{
 
 #define INST_FAST_LT(TS,TI,TD,WITH_GAMMA)                               \
   template void fast_lt<lt_icl##TS,lt_icl##TI,lt_icl##TD,               \
-    ThreshType<lt_icl##TS>::T,WITH_GAMMA>                      \
+    ThreshType<lt_icl##TS>::T,WITH_GAMMA>                               \
   (const lt_icl##TS*, const lt_icl##TI*, lt_icl##TD*, int, int,         \
    int, ThreshType<lt_icl##TS>::T,float,int)
 
@@ -193,6 +195,9 @@ namespace icl{
   INST_FAST_LT(SRC,32s,16s,WITH_GAMMA);           \
   INST_FAST_LT(SRC,32f,16s,WITH_GAMMA);           \
   INST_FAST_LT(SRC,64f,16s,WITH_GAMMA);           \
+  INST_FAST_LT(SRC,32s,16u,WITH_GAMMA);           \
+  INST_FAST_LT(SRC,32f,16u,WITH_GAMMA);           \
+  INST_FAST_LT(SRC,64f,16u,WITH_GAMMA);           \
   INST_FAST_LT(SRC,32s,32s,WITH_GAMMA);           \
   INST_FAST_LT(SRC,32f,32s,WITH_GAMMA);           \
   INST_FAST_LT(SRC,64f,32s,WITH_GAMMA);           \
@@ -201,6 +206,4 @@ namespace icl{
   INST_FAST_LT(SRC,64f,32f,WITH_GAMMA);           \
   INST_FAST_LT(SRC,32s,64f,WITH_GAMMA);           \
   INST_FAST_LT(SRC,32f,64f,WITH_GAMMA);           \
-  INST_FAST_LT(SRC,64f,64f,WITH_GAMMA);       
-
-
+  INST_FAST_LT(SRC,64f,64f,WITH_GAMMA);

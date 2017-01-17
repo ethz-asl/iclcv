@@ -1299,6 +1299,111 @@ namespace icl{
         }
       };
 
+      /// type for 16 icl16u values
+      struct icl256i16u : Icl256i {
+        inline icl256i16u() {
+        }
+
+        inline icl256i16u(const icl256i16u &v) {
+          v0 = v.v0;
+          v1 = v.v0;
+        }
+
+        inline icl256i16u(const Icl256i &v) {
+          v0 = v.v0;
+          v1 = v.v0;
+        }
+
+        inline icl256i16u(const __m128i &vl, const __m128i &vh) {
+          v0 = vl;
+          v1 = vh;
+        }
+
+        inline icl256i16u(const __m128i *v) {
+          v0 = *v;
+          v1 = *(v + 1);
+        }
+
+        inline icl256i16u(const icl16u *v) {
+          v0 = _mm_loadu_si128((__m128i*)v);
+          v1 = _mm_loadu_si128((__m128i*)(v + 8));
+        }
+
+        inline icl256i16u(const icl16u v) {
+          v0 = _mm_set1_epi16(v);
+          v1 = _mm_set1_epi16(v);
+        }
+
+        inline icl256i16u(const icl128i8u &v) {
+          const __m128i vk0 = _mm_setzero_si128();
+          v0 = _mm_unpacklo_epi8(v.v0, vk0);
+          v1 = _mm_unpackhi_epi8(v.v0, vk0);
+        }
+
+        inline icl256i16u(const Icl512i &v) {
+          v0 = _mm_packs_epi32(v.v0, v.v1);
+          v1 = _mm_packs_epi32(v.v2, v.v3);
+        }
+
+        inline operator Icl256i () const {
+          return *this;
+        }
+
+        inline icl256i16u& operator=(const icl256i16u &v) {
+          v0 = v.v0;
+          v1 = v.v1;
+          return *this;
+        }
+
+        inline icl256i16u& operator=(const Icl256i &v) {
+          v0 = v.v0;
+          v1 = v.v1;
+          return *this;
+        }
+
+        inline icl256i16u& operator+=(const icl256i16u &v) {
+          v0 = _mm_add_epi16(v0, v.v0);
+          v1 = _mm_add_epi16(v1, v.v1);
+          return *this;
+        }
+
+        inline icl256i16u& operator-=(const icl256i16u &v) {
+          v0 = _mm_sub_epi16(v0, v.v0);
+          v1 = _mm_sub_epi16(v1, v.v1);
+          return *this;
+        }
+
+        inline void store(__m128i *v) const {
+          _mm_store_si128(v, v0);
+          _mm_store_si128(v + 1, v1);
+        }
+
+        inline void storeu(__m128i *v) const {
+          _mm_storeu_si128(v, v0);
+          _mm_storeu_si128(v + 1, v1);
+        }
+
+        inline void store(icl16s *v) const {
+          _mm_store_si128((__m128i*)v, v0);
+          _mm_store_si128((__m128i*)(v + 8), v1);
+        }
+
+        inline void storeu(icl16s *v) const {
+          _mm_storeu_si128((__m128i*)v, v0);
+          _mm_storeu_si128((__m128i*)(v + 8), v1);
+        }
+
+        inline void store(icl16u *v) const {
+          _mm_store_si128((__m128i*)v, v0);
+          _mm_store_si128((__m128i*)(v + 8), v1);
+        }
+
+        inline void storeu(icl16u *v) const {
+          _mm_storeu_si128((__m128i*)v, v0);
+          _mm_storeu_si128((__m128i*)(v + 8), v1);
+        }
+      };
+
       /// type for 8 icl32 values
       struct icl256i32s : Icl256i {
 
@@ -2325,6 +2430,7 @@ namespace icl{
       typedef icl128i16s icl16sx8;
       typedef icl128i32s icl32sx4;
       typedef icl256i16s icl16sx16;
+      typedef icl256i16u icl16ux16;
       typedef icl256i32s icl32sx8;
       typedef icl512i32s icl32sx16;
       typedef icl128d icl64fx2;

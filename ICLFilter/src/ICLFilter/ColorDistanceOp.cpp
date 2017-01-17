@@ -39,7 +39,7 @@ namespace icl{
     inline R rgb_dist_sqr(T r0, T r1, T r2, T a, T b, T c){
       return (R)(sqr((R)r0-(R)a) + sqr((R)r1-(R)b) + sqr((R)r2-(R)c));
     }
-    
+
     template<class S, class D, class T, bool useThresh>
     void apply_color_distance_map(const Img<S> &src, const Img<D> &dst,const S ref[3], const T thresh){
       const Channel<S> r = src[0], g = src[1], b=src[2];
@@ -56,27 +56,31 @@ namespace icl{
         }
       }
     }
-  
+
     void ColorDistanceOp::apply(const ImgBase *src, ImgBase **dst){
       ICLASSERT_RETURN(src);
       ICLASSERT_RETURN(src->getChannels() == 3);
       ICLASSERT_RETURN(m_refColor.size() == 3);
-  
+
       const icl8u ref8u [3] = { (icl8u)m_refColor[0], (icl8u)m_refColor[1], (icl8u)m_refColor[2] };
       const icl16s ref16s[3] = { (icl16s)m_refColor[0], (icl16s)m_refColor[1], (icl16s)m_refColor[2] };
+      const icl16u ref16u[3] = { (icl16u)m_refColor[0], (icl16u)m_refColor[1], (icl16u)m_refColor[2] };
       const icl32s ref32s[3] = { (icl32s)m_refColor[0], (icl32s)m_refColor[1], (icl32s)m_refColor[2] };
       const icl32f ref32f[3] = { (icl32f)m_refColor[0], (icl32f)m_refColor[1], (icl32f)m_refColor[2] };
       const icl64f ref64f[3] = { (icl64f)m_refColor[0], (icl64f)m_refColor[1], (icl64f)m_refColor[2] };
-  
+
       if(m_threshold == -1){
         if (!UnaryOp::prepare (dst, src->getDepth() == depth64f ? depth64f : depth32f, src->getSize(), formatMatrix, 1, src->getImageRect(), src->getTime())) return;
-        
+
         switch(src->getDepth()){
           case depth8u:
             apply_color_distance_map<icl8u,icl32f,icl32f,false>(*src->as8u(),*(*dst)->as32f(), ref8u, m_threshold);
             break;
           case depth16s:
             apply_color_distance_map<icl16s,icl32f,icl32f,false>(*src->as16s(),*(*dst)->as32f(), ref16s, m_threshold);
+            break;
+          case depth16u:
+            apply_color_distance_map<icl16u,icl32f,icl32f,false>(*src->as16u(),*(*dst)->as32f(), ref16u, m_threshold);
             break;
           case depth32s:
             apply_color_distance_map<icl32s,icl32f,icl32f,false>(*src->as32s(),*(*dst)->as32f(), ref32s, m_threshold);
@@ -96,6 +100,9 @@ namespace icl{
             break;
           case depth16s:
             apply_color_distance_map<icl16s,icl8u,icl32s,true>(*src->as16s(),*(*dst)->as8u(), ref16s, m_threshold);
+            break;
+          case depth16u:
+            apply_color_distance_map<icl16u,icl8u,icl32s,true>(*src->as16u(),*(*dst)->as8u(), ref16u, m_threshold);
             break;
           case depth32s:
             apply_color_distance_map<icl32s,icl8u,icl32s,true>(*src->as32s(),*(*dst)->as8u(), ref32s, m_threshold);

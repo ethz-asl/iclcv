@@ -138,9 +138,10 @@ namespace icl {
 			 * @param depth various image depths can be used \n
 				  depth8u  = 0, < 8Bit unsigned integer values range {0,1,...255} \n
 				  depth16s = 1, < 16Bit signed integer values \n
-				  depth32s = 2, < 32Bit signed integer values \n
-				  depth32f = 3, < 32Bit floating point values \n
-				  depth64f = 4, < 64Bit floating point values (WARNING! float64 is not always supported by opencl and thus is not handled in ICL so far) \n
+				  depth16u = 2, < 16Bit unsigned integer values \n
+				  depth32s = 3, < 32Bit signed integer values \n
+				  depth32f = 4, < 32Bit floating point values \n
+				  depth64f = 5, < 64Bit floating point values (WARNING! float64 is not always supported by opencl and thus is not handled in ICL so far) \n
 			 * @param src Optional source pointer. If not NULL the content of this pointer will automatically be uploaded to the device.
 			 * @return CLImage2D instance
 			 *
@@ -157,9 +158,10 @@ namespace icl {
 			 * @param depth various image depths can be used \n
 				  depth8u  = 0, < 8Bit unsigned integer values range {0,1,...255} \n
 				  depth16s = 1, < 16Bit signed integer values \n
-				  depth32s = 2, < 32Bit signed integer values \n
-				  depth32f = 3, < 32Bit floating point values \n
-				  depth64f = 4, < 64Bit floating point values (WARNING! float64 is not always supported by opencl and thus is not handled in ICL so far) \n
+				  depth16u = 2, < 16Bit unsigned integer values \n
+				  depth32s = 3, < 32Bit signed integer values \n
+				  depth32f = 4, < 32Bit floating point values \n
+				  depth64f = 5, < 64Bit floating point values (WARNING! float64 is not always supported by opencl and thus is not handled in ICL so far) \n
 			 * @param num_channel The number of image channels
 			 * @param src Optional source pointer. If not NULL the content of this pointer will automatically be uploaded to the device.
 			 * @return CLImage2D instance
@@ -215,9 +217,10 @@ namespace icl {
 			 * @param depth various image depths can be used \n
 				  depth8u  = 0, < 8Bit unsigned integer values range {0,1,...255} \n
 				  depth16s = 1, < 16Bit signed integer values \n
-				  depth32s = 2, < 32Bit signed integer values \n
-				  depth32f = 3, < 32Bit floating point values \n
-				  depth64f = 4, < 64Bit floating point values (WARNING! float64 is not always supported by opencl and thus is not handled in ICL so far) \n
+				  depth16u = 2, < 16Bit unsigned integer values \n
+				  depth32s = 3, < 32Bit signed integer values \n
+				  depth32f = 4, < 32Bit floating point values \n
+				  depth64f = 5, < 64Bit floating point values (WARNING! float64 is not always supported by opencl and thus is not handled in ICL so far) \n
 			 * @param num_channel The number of image channels
 			 * @param src Optional source pointer. If not NULL the content of this pointer will automatically be uploaded to the device.
 			 * @return pointer to CLImage2D instance
